@@ -2,7 +2,8 @@
 {
     public abstract class DispositivosElectronicos
     {
-        protected float precio;
+        protected int cantidad;
+        protected float precioUnitario;
         protected EFactura tipoFactura;
 
     }
