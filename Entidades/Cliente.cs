@@ -13,12 +13,15 @@ namespace Entidades
         protected long cuit;
         protected ETipos tipoCliente;
 
+        private List<DispositivoElectronico> dispositivos;
+
         public Cliente() 
         {   
             this.cuit = 10000000001;
             this.nombreEmpresa = "NO SE INGRESO";
             this.tipoCliente = ETipos.ConsumidorFinal;
             this.ubicación = "NO SE INGRESO";
+            this.dispositivos = new List<DispositivoElectronico>();
         }
         public Cliente(long cuit):this()
         {
@@ -37,13 +40,41 @@ namespace Entidades
         {
             this.ubicación = ubicacion;
         }
-        public static bool operator ==(Cliente a, Cliente b)
+                      
+        public static Cliente operator +(Cliente cliente, DispositivoElectronico dispo)
         {
-            return a.cuit == b.cuit && a.nombreEmpresa == b.nombreEmpresa;
+            if (cliente != dispo)
+            {
+                cliente.dispositivos.Add(dispo);
+
+            }
+            else
+            {
+                Console.WriteLine("El cliente ya lo compro");
+            }
+            return cliente;
         }
-        public static bool operator !=(Cliente a, Cliente b)
+        public static Cliente operator -(Cliente cliente, DispositivoElectronico dispo)
         {
-            return !(a == b);
+            if (cliente == dispo)
+            {
+                cliente.dispositivos.Remove(dispo);
+            }
+            else
+            {
+                Console.WriteLine("No se encontro");
+            }
+            return cliente;
+        }
+        public static bool operator ==(Cliente cliente, DispositivoElectronico dispositivo)
+        {
+
+            return cliente.dispositivos.Contains(dispositivo); // tiene que tener el Equals
+
+        }
+        public static bool operator !=(Cliente cliente, DispositivoElectronico dispositivo)
+        {
+            return !(cliente == dispositivo);
         }
         public override bool Equals(object? obj)
         {
@@ -57,10 +88,15 @@ namespace Entidades
         public string ToString()
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"-----------------------------------------");
             sb.AppendLine($"NOMBRE / EMPRESA: {this.nombreEmpresa} \nCUIT: {this.cuit}\nTIPO: {this.tipoCliente.ToString()} \nUBICACION: {this.ubicación}");
-
+            sb.AppendLine($"-----------------------------------------");
+            if (this.dispositivos != null)
+            {
+                for (int i = 0; i < this.dispositivos.Count; i++)
+                    sb.AppendLine(this.dispositivos[i].ToString());
+            }
             return sb.ToString();
         }
-
     }
 }
