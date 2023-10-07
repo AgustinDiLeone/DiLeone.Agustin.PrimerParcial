@@ -34,10 +34,16 @@ internal class Program
         p2 += d3;
         p2 += d2;
         p3 += d4;
+
+        
         Console.WriteLine(p.ToString());
         Console.WriteLine(p1.ToString());
         Console.WriteLine(p2.ToString());
         Console.WriteLine(p3.ToString());
+
+        for (int i = 0; i < p3.Dispositivos.Count; i++)
+            Console.WriteLine(p3.Dispositivos[i].MostrarVisor());
+
         Console.ReadLine();
     }
 }

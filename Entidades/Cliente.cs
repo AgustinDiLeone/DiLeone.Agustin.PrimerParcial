@@ -15,6 +15,12 @@ namespace Entidades
 
         private List<DispositivoElectronico> dispositivos;
 
+        public List<DispositivoElectronico> Dispositivos
+        {
+            get { return this.dispositivos; }
+        }
+
+
         public Cliente() 
         {   
             this.cuit = 10000000001;
@@ -84,6 +90,11 @@ namespace Entidades
                 retorno = this == (Cliente)obj;
             }
             return base.Equals(obj);
+        }
+        public string MostrarVisor()
+        {
+            return ($"{this.nombreEmpresa} - {this.cuit} - {this.tipoCliente.ToString()}");
+            
         }
         public string ToString()
         {

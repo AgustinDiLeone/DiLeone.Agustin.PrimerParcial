@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
@@ -42,7 +43,10 @@ namespace Entidades
             this.cantCamaras = cantCamaras;
             this.RAM = RAM;
         }
-        
+        public override string MostrarVisor()
+        {
+            return ($"{base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} - {this.almacenamiento}Gb ROM - {this.RAM}Gb RAM");
+        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

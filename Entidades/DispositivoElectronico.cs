@@ -13,7 +13,7 @@ namespace Entidades
         protected EFactura tipoFactura;
         protected bool entregado;
 
-
+        public abstract string MostrarVisor();
 
         public DispositivoElectronico()
         {
@@ -62,6 +62,7 @@ namespace Entidades
             }
             return base.Equals(obj);
         }
+
         public virtual string ToString()
         {
             StringBuilder sb = new StringBuilder();
