@@ -13,46 +13,59 @@ namespace Entidades
         protected bool smartTv;
 
 
-        public Celular()
+        public Televisor()
         {
             this.pulgadas = 0;
-            this.almacenamiento = 0;
-            this.RAM = 0;
-            this.cantCamaras = 0;
+            this.resolucion = 0;
 
         }
-        public Celular(int id, int cantidad, double precio) : base(id, cantidad, precio) { }
-        public Celular(int id, int cantidad, double precio, string modelo, string marca,
+        public Televisor(int id, int cantidad, double precio) : base(id, cantidad, precio) { }
+        public Televisor(int id, int cantidad, double precio, string modelo, string marca,
             EFactura tipoFactura) : base(id, cantidad, precio, modelo, marca, tipoFactura) { }
-        public Celular(int id, int cantidad, double precio, double pulgadas, int almacenamiento,
-            int RAM, int cantCamaras) : base(id, cantidad, precio)
+        public Televisor(int id, int cantidad, double precio, double pulgadas, int resolucion,
+            bool smartTv) : base(id, cantidad, precio)
         {
             this.pulgadas = pulgadas;
-            this.almacenamiento = almacenamiento;
-            this.cantCamaras = cantCamaras;
-            this.RAM = RAM;
+            this.resolucion = resolucion;
+            this.smartTv = smartTv;
         }
-        public Celular(int id, int cantidad, double precio, string modelo, string marca,
-            EFactura tipoFactura, double pulgadas, int almacenamiento, int RAM,
-            int cantCamaras) : base(id, cantidad, precio, modelo, marca, tipoFactura)
+        public Televisor(int id, int cantidad, double precio, string modelo, string marca,
+            EFactura tipoFactura, double pulgadas, int resolucion,
+            bool smartTv) : base(id, cantidad, precio, modelo, marca, tipoFactura)
         {
             this.pulgadas = pulgadas;
-            this.almacenamiento = almacenamiento;
-            this.cantCamaras = cantCamaras;
-            this.RAM = RAM;
+            this.resolucion = resolucion;
+            this.smartTv = smartTv;
         }
         public override string MostrarVisor()
         {
-            return ($"{base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} - {this.almacenamiento}Gb ROM - {this.RAM}Gb RAM");
+            string visor = ($"{base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} - {this.pulgadas}In - {this.resolucion}px ");
+            if (this.smartTv)
+            {
+                visor += "- SMART TV: SI";
+            }
+            else
+            {
+                visor += "- SMART TV: NO";
+            }
+            return visor;
+
         }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.ToString());
             sb.AppendLine($"PULGADAS: {this.pulgadas}");
-            sb.AppendLine($"ALMACENAMIENTO: {this.almacenamiento}");
-            sb.AppendLine($"CANTIDAD DE CAMARAS: {this.cantCamaras}");
-            sb.AppendLine($"RAM: {this.RAM}");
+            sb.AppendLine($"RESOLUCION: {this.resolucion}px");
+            if ( this.smartTv )
+            {
+                sb.AppendLine($"SMART TV: SI");
+            }
+            else
+            {
+                sb.AppendLine($"SMART TV: NO");
+            }
+
             return sb.ToString();
         }
 
