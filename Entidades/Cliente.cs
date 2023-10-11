@@ -96,11 +96,25 @@ namespace Entidades
             return ($"{this.nombreEmpresa} - {this.cuit} - {this.tipoCliente.ToString()}");
             
         }
+        public string MostrarVisorDispositivos()
+        {
+            if (this.dispositivos != null)
+            {
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < this.Dispositivos.Count; i++)
+                    sb.AppendLine(this.Dispositivos[i].MostrarVisor());
+                return sb.ToString();
+            }
+            return "";
+
+        }
         public string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"-----------------------------------------");
-            sb.AppendLine($"NOMBRE / EMPRESA: {this.nombreEmpresa} \nCUIT: {this.cuit}\nTIPO: {this.tipoCliente.ToString()} \nUBICACION: {this.ubicación}");
+            sb.AppendLine($"NOMBRE / EMPRESA: {this.nombreEmpresa} \n" +
+                $"CUIT: {this.cuit}\nTIPO: {this.tipoCliente.ToString()} \n" +
+                $"UBICACION: {this.ubicación}");
             sb.AppendLine($"-----------------------------------------");
             if (this.dispositivos != null)
             {

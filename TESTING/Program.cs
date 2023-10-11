@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        /*
+        
         Cliente p = new Cliente(24478569746,"Juansito",ETipos.Exento);
         Cliente p1 = new Cliente(25456978459);
         Cliente p2 = new Cliente();
@@ -17,7 +17,7 @@ internal class Program
         DispositivoElectronico d4 = new Celular(74, 58, 47,"Samsung","S8+",EFactura.C);
         DispositivoElectronico t = new Televisor(2,10, 2547, "samsung", "a23", EFactura.C, 80, 1080,true);
 
-        /*
+        
         Console.WriteLine(p.ToString());
         Console.WriteLine(p1.ToString());
         Console.WriteLine(p2.ToString());
@@ -27,8 +27,8 @@ internal class Program
         Console.WriteLine(d2.ToString());
         Console.WriteLine(d3.ToString());
         Console.WriteLine(d4.ToString());
-        */
-        /*
+       
+
         p += d;
         p1 += d1;
         p1 += d2;
@@ -46,7 +46,7 @@ internal class Program
 
         for (int i = 0; i < p3.Dispositivos.Count; i++)
             Console.WriteLine(p3.Dispositivos[i].MostrarVisor());
-        */
+        
 
 
 

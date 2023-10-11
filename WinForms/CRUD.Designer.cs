@@ -35,9 +35,9 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(35, 40);
+            listBox1.Location = new Point(35, 55);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(399, 364);
+            listBox1.Size = new Size(399, 349);
             listBox1.TabIndex = 0;
             // 
             // CRUD

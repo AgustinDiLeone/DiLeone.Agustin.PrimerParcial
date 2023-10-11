@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -6,6 +7,7 @@ namespace WinForms
     public partial class FrmLogIn : Form
     {
         public bool validacionClaveUsuario = false;
+        int intentos = 0;
         public FrmLogIn()
         {
             InitializeComponent();
@@ -38,12 +40,12 @@ namespace WinForms
         }
         private static List<Usuario> DeserealizarUsuarios()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            path += @"\MOCK_DATA.json";
-            string jsonString = File.ReadAllText(path);
+            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string path = @"..\..\..\..\WinForms\MOCK_DATA.json";
 
 
             // Lee el contenido del archivo JSON en una cadena
+            string jsonString = File.ReadAllText(path);
 
             // Deserializa la cadena JSON en una lista de objetos de tipo Usuario
             List<Usuario> listaUsuarios = JsonSerializer.Deserialize<List<Usuario>>(jsonString);
@@ -53,12 +55,33 @@ namespace WinForms
 
         private void FrmLogIn_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Deseas cerrar el formulario?", "Confirmar Cierre", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.No)
+            if (!validacionClaveUsuario)
             {
-                e.Cancel = true; 
+                DialogResult result = MessageBox.Show("¿Deseas cerrar el formulario?", "Confirmar Cierre", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                txtClave.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtClave.UseSystemPasswordChar = true;
+            }
+                   
         }
     }
 }

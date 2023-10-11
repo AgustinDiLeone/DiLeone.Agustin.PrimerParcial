@@ -33,6 +33,8 @@
             txtCorreo = new TextBox();
             txtClave = new TextBox();
             BtnAceptar = new Button();
+            BtnCancelar = new Button();
+            checkBox1 = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -67,26 +69,49 @@
             // 
             txtClave.Location = new Point(41, 110);
             txtClave.Name = "txtClave";
-            txtClave.Size = new Size(366, 23);
+            txtClave.Size = new Size(336, 23);
             txtClave.TabIndex = 3;
             txtClave.UseSystemPasswordChar = true;
             // 
             // BtnAceptar
             // 
             BtnAceptar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnAceptar.Location = new Point(134, 169);
+            BtnAceptar.Location = new Point(41, 169);
             BtnAceptar.Name = "BtnAceptar";
-            BtnAceptar.Size = new Size(189, 34);
+            BtnAceptar.Size = new Size(140, 34);
             BtnAceptar.TabIndex = 4;
             BtnAceptar.Text = "Aceptar";
             BtnAceptar.UseVisualStyleBackColor = true;
             BtnAceptar.Click += BtnAceptar_Click;
+            // 
+            // BtnCancelar
+            // 
+            BtnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnCancelar.Location = new Point(267, 169);
+            BtnCancelar.Name = "BtnCancelar";
+            BtnCancelar.Size = new Size(140, 34);
+            BtnCancelar.TabIndex = 5;
+            BtnCancelar.Text = "Cancelar";
+            BtnCancelar.UseVisualStyleBackColor = true;
+            BtnCancelar.Click += BtnCancelar_Click;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(383, 114);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(15, 14);
+            checkBox1.TabIndex = 6;
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // FrmLogIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(448, 215);
+            Controls.Add(checkBox1);
+            Controls.Add(BtnCancelar);
             Controls.Add(BtnAceptar);
             Controls.Add(txtClave);
             Controls.Add(txtCorreo);
@@ -106,5 +131,7 @@
         private TextBox txtCorreo;
         private TextBox txtClave;
         private Button BtnAceptar;
+        private Button BtnCancelar;
+        private CheckBox checkBox1;
     }
 }
