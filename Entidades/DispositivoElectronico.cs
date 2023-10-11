@@ -15,6 +15,7 @@ namespace Entidades
 
         public abstract string MostrarVisor();
 
+
         public DispositivoElectronico()
         {
             this.id = -1;
@@ -43,15 +44,65 @@ namespace Entidades
             this.tipoFactura = tipoFactura;
         }
 
+        #region Getter y Seters
+        public int Id
+        {
+            get { return id; }
+            set { this.id = value; }
+        }
+
+        public DateTime HoraCompra
+        {
+            get { return this.horaCompra; }
+            set { this.HoraCompra = value; }
+        }
+
+        public int Cantidad
+        {
+            get { return this.cantidad; }
+            set { this.cantidad = value;}
+        }
+
+        public string Marca
+        {
+            get { return this.marca; }
+            set { this.marca = value; }
+        }
+
+        public string Modelo
+        {
+            get { return this.modelo; }
+            set { this.modelo = value; }
+        }
+        public double PrecioUnitario
+        {
+            get { return this.precioUnitario; }
+            set { this.precioUnitario = value;}
+        }
+        public EFactura TipoFactura
+        {
+            get { return this.tipoFactura; }
+            set { this.tipoFactura = value; }
+        }
+
+        public bool Entregado
+        {
+            get { return this.entregado; }
+            set { this.entregado = value; }
+        }
+        #endregion
+
+        #region Sobrecarga de operadores
 
         public static bool operator ==(DispositivoElectronico a, DispositivoElectronico b)
         {
-            return a.id == b.id && a.horaCompra == b.horaCompra;
+            return a.id == b.id || a.horaCompra == b.horaCompra;
         }
         public static bool operator !=(DispositivoElectronico a, DispositivoElectronico b)
         {
             return !(a == b);
         }
+        #endregion 
 
         public override bool Equals(object? obj)
         {

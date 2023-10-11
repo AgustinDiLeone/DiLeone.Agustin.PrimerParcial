@@ -48,6 +48,7 @@
             lstBox.ItemHeight = 15;
             lstBox.Location = new Point(29, 31);
             lstBox.Name = "lstBox";
+            lstBox.ScrollAlwaysVisible = true;
             lstBox.Size = new Size(395, 379);
             lstBox.TabIndex = 0;
             lstBox.SelectedIndexChanged += lstBox_SelectedIndexChanged;

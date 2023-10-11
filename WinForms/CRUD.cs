@@ -68,5 +68,10 @@ namespace WinForms
                 //this.ActualizarVisor();
             }
         }
+
+        private void CRUD_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

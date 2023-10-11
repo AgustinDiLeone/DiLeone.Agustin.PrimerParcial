@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinForms
 {
@@ -28,6 +29,7 @@ namespace WinForms
             this.CenterToScreen();
             this.tipo = tipo;
             this.cliente = cliente;
+
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -51,8 +53,12 @@ namespace WinForms
         {
             if (this.tipo == "cliente")
             {
-                LblCliente.Text = this.cliente.ToString();
+                txtClientes.Text = this.cliente.ToString();
             }
+        }
+
+        private void lstClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

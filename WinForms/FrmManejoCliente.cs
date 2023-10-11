@@ -12,14 +12,23 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinForms
 {
-    public partial class FrmAgregarCliente : Form
+    public partial class FrmManejoCliente : Form
     {
         public Entidades.Cliente cliente;
         public bool seCreoCliente;
-        public FrmAgregarCliente()
+        public FrmManejoCliente()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+        }
+        public FrmManejoCliente( Cliente cliente):this() 
+        {
+            this.cliente = cliente;
+            TxtNombre.Text = this.cliente.Nombre;
+            TxtCuit.Text = this.cliente.Cuit.ToString();
+            TxtUbicacion.Text = this.cliente.Ubicacion; 
+            CmbTipo.SelectedItem = this.cliente.TipoCliente;
+
         }
 
         private void FrmAgregarCliente_Load(object sender, EventArgs e)

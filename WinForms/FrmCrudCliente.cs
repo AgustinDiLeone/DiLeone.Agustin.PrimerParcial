@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.Xml;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace WinForms
 {
@@ -20,12 +21,13 @@ namespace WinForms
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            //this.clientes = new List<Cliente>();
 
         }
         private void ActualizarVisor()
         {
             lstBox.Items.Clear();
-            if (this.clientes.Count >= 0)
+            if (this.clientes != null)
             {
                 foreach (Cliente cliente in this.clientes)
                 {
@@ -34,12 +36,6 @@ namespace WinForms
             }
 
         }
-        public void FrmClientes_Load(object sender, EventArgs e)
-        {
-            this.DeserializacionXml();
-            this.ActualizarVisor();
-        }
-
         public override void BtnVer_Click(object sender, EventArgs e)
         {
             int index = this.lstBox.SelectedIndex;
@@ -54,7 +50,7 @@ namespace WinForms
         }
         public override void BtnAgregar_Click(object sender, EventArgs e)
         {
-            FrmAgregarCliente frmAgregarCliente = new FrmAgregarCliente();
+            FrmManejoCliente frmAgregarCliente = new FrmManejoCliente();
             frmAgregarCliente.ShowDialog();
             if (frmAgregarCliente.seCreoCliente)
             {
@@ -89,7 +85,7 @@ namespace WinForms
                 MessageBox.Show("Selecciona el elemento que deseas modificar", "ERROR");
                 return;
             }
-            FrmAgregarCliente frmAgregarCliente = new FrmAgregarCliente();
+            FrmManejoCliente frmAgregarCliente = new FrmManejoCliente(this.clientes[index]);
             frmAgregarCliente.ShowDialog();
             if (frmAgregarCliente.seCreoCliente)
             {
@@ -102,16 +98,16 @@ namespace WinForms
         {
             throw new NotImplementedException();
         }
-        private void FrmClientes_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.SerializaciónXml();
-        }
+        /*
         private void SerializaciónXml()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += @"\ListaDeClientes.xml";
+            //string path = @"..\..\..\..\WinForms\ListaDeClientes.xml";
             try
             {
-                using (XmlTextWriter writer = new XmlTextWriter(path + @"\ListaDeProductos.xml", Encoding.UTF8))
+
+                using (XmlTextWriter writer = new XmlTextWriter(path, Encoding.UTF8))
                 {
                     XmlSerializer ser = new XmlSerializer((typeof(List<Cliente>)));
                     ser.Serialize(writer, this.clientes);
@@ -124,12 +120,24 @@ namespace WinForms
             }
 
         }
+        */
+        public void SerializaciónXml(List<Cliente> listaClientes, string nombreArchivo)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Cliente>));
+
+            using (TextWriter writer = new StreamWriter(nombreArchivo))
+            {
+                serializer.Serialize(writer, listaClientes);
+            }
+        }
+        /*
         private void DeserializacionXml()
         {
             try
             {
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                using (XmlTextReader reader = new XmlTextReader(path + @"\ListaDeProductos.xml"))
+                path += @"\ListaDeClientes.xml";
+                using (XmlTextReader reader = new XmlTextReader(path))
                 {
                     XmlSerializer ser = new XmlSerializer((typeof(List<Cliente>)));
 
@@ -143,21 +151,53 @@ namespace WinForms
                 Console.WriteLine("Error al Deserializar los Datos");
             }
         }
+        */
+        public List<Cliente> DeserializacionXml(string nombreArchivo)
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Cliente>));
+
+                using (TextReader reader = new StreamReader(nombreArchivo))
+                {
+                    return (List<Cliente>)serializer.Deserialize(reader);
+                }
+            }
+            catch 
+            { 
+                return this.clientes = new List<Cliente>();
+            }
+
+        }
 
         private void FrmCrudCliente_Load(object sender, EventArgs e)
         {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += @"\ListaDeClientes.xml";
+            this.clientes = this.DeserializacionXml(path);
+            if (this.clientes == null)
+                this.clientes = new List<Cliente>();
+             /*
             this.clientes = new List<Cliente>();
             Cliente x = new Cliente(1486245, "juanito", ETipos.Monotributista, "Buenos Aires");
             DispositivoElectronico y = new Celular(10, 2000, 542.4, "Samsung", "A23", EFactura.B, 20, 264, 18, 3);
+            DispositivoElectronico z = new Celular(10, 2000, 542.4, "Samsung", "A23", EFactura.B, 20, 264, 18, 3);
             x += y;
+            x += z;
             this.clientes.Add(x);
+            */
+            
+            //MessageBox.Show(this.clientes.ToString());
             this.ActualizarVisor();
         }
 
         private void FrmCrudCliente_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.SerializaciónXml();
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += @"\ListaDeClientes.xml";
+            this.SerializaciónXml(this.clientes, path);
         }
+
 
         private void FrmCrudCliente_FormClosing(object sender, FormClosingEventArgs e)
         {

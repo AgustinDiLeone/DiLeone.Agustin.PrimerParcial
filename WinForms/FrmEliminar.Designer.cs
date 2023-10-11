@@ -31,7 +31,7 @@
             BtnAceptar = new Button();
             BtnCancelar = new Button();
             label1 = new Label();
-            LblCliente = new Label();
+            txtClientes = new TextBox();
             SuspendLayout();
             // 
             // BtnAceptar
@@ -66,21 +66,22 @@
             label1.TabIndex = 3;
             label1.Text = "¿Deseas eliminarlo?";
             // 
-            // LblCliente
+            // txtClientes
             // 
-            LblCliente.AutoSize = true;
-            LblCliente.Location = new Point(23, 52);
-            LblCliente.Name = "LblCliente";
-            LblCliente.Size = new Size(60, 15);
-            LblCliente.TabIndex = 4;
-            LblCliente.Text = "LblCliente";
+            txtClientes.Location = new Point(12, 44);
+            txtClientes.Multiline = true;
+            txtClientes.Name = "txtClientes";
+            txtClientes.ReadOnly = true;
+            txtClientes.ScrollBars = ScrollBars.Vertical;
+            txtClientes.Size = new Size(453, 307);
+            txtClientes.TabIndex = 4;
             // 
             // FrmEliminar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(481, 430);
-            Controls.Add(LblCliente);
+            Controls.Add(txtClientes);
             Controls.Add(label1);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnAceptar);
@@ -95,6 +96,6 @@
         private Button BtnAceptar;
         private Button BtnCancelar;
         private Label label1;
-        private Label LblCliente;
+        private TextBox txtClientes;
     }
 }

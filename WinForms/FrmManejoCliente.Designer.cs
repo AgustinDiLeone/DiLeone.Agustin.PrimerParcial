@@ -1,6 +1,6 @@
 ﻿namespace WinForms
 {
-    partial class FrmAgregarCliente
+    partial class FrmManejoCliente
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,28 +10,47 @@ namespace Entidades
     public class Cliente
     {
         protected string nombreEmpresa;
-        protected string ubicación;
+        protected string ubicacion;
         protected long cuit;
         protected ETipos tipoCliente;
 
         private List<DispositivoElectronico> dispositivos;
 
+        #region Getters y Setters
+        public long Cuit
+        {
+            get { return this.cuit; }
+
+            set { this.cuit = value; }
+        }
         public string Nombre
         {
             get { return this.nombreEmpresa; }
+            set { this.nombreEmpresa = value; }
         }
+        public ETipos TipoCliente
+        {
+            get { return tipoCliente; }
+            set { this.tipoCliente = value; }
+        }
+        public string Ubicacion
+        {
+            get { return this.ubicacion; }
+            set { this.ubicacion = value; }
+        }
+
         public List<DispositivoElectronico> Dispositivos
         {
             get { return this.dispositivos; }
             set { this.dispositivos = value;}
         }
-
+        #endregion
         public Cliente() 
         {   
             this.cuit = 10000000001;
             this.nombreEmpresa = "NO SE INGRESO";
             this.tipoCliente = ETipos.ConsumidorFinal;
-            this.ubicación = "NO SE INGRESO";
+            this.ubicacion = "NO SE INGRESO";
             this.dispositivos = new List<DispositivoElectronico>();
         }
         public Cliente(long cuit):this()
@@ -48,9 +68,9 @@ namespace Entidades
         }
         public Cliente(long cuit, string nombreEmpresa,  ETipos tipoCliente, string ubicacion):this (cuit, nombreEmpresa, tipoCliente) 
         {
-            this.ubicación = ubicacion;
+            this.ubicacion = ubicacion;
         }
-                      
+        #region Sobrecarga de operadores              
         public static Cliente operator +(Cliente cliente, DispositivoElectronico dispo)
         {
             if (cliente != dispo)
@@ -86,6 +106,8 @@ namespace Entidades
         {
             return !(cliente == dispositivo);
         }
+        #endregion
+
         public override bool Equals(object? obj)
         {
             bool retorno = false;
@@ -116,9 +138,10 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"-----------------------------------------");
-            sb.AppendLine($"NOMBRE / EMPRESA: {this.nombreEmpresa} \n" +
-                $"CUIT: {this.cuit}\nTIPO: {this.tipoCliente.ToString()} \n" +
-                $"UBICACION: {this.ubicación}");
+            sb.AppendLine($"NOMBRE / EMPRESA: {this.nombreEmpresa}");
+            sb.AppendLine($"CUIT: {this.cuit}");
+            sb.AppendLine($"TIPO: {this.tipoCliente.ToString()}");
+            sb.AppendLine($"UBICACION: {this.ubicacion}");
             sb.AppendLine($"-----------------------------------------");
             if (this.dispositivos != null)
             {

@@ -32,6 +32,8 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            richTextBox1 = new RichTextBox();
+            vScrollBar1 = new VScrollBar();
             SuspendLayout();
             // 
             // listBox1
@@ -74,17 +76,35 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(483, 219);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(305, 169);
+            richTextBox1.TabIndex = 4;
+            richTextBox1.Text = "";
+            // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(406, 55);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(19, 398);
+            vScrollBar1.TabIndex = 5;
+            // 
             // CRUD
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(vScrollBar1);
+            Controls.Add(richTextBox1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(listBox1);
             Name = "CRUD";
             Text = "CRUD";
+            Load += CRUD_Load;
             ResumeLayout(false);
         }
 
@@ -94,5 +114,7 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private RichTextBox richTextBox1;
+        private VScrollBar vScrollBar1;
     }
 }
