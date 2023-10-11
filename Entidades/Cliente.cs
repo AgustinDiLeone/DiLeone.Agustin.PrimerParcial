@@ -15,11 +15,15 @@ namespace Entidades
 
         private List<DispositivoElectronico> dispositivos;
 
+        public string Nombre
+        {
+            get { return this.nombreEmpresa; }
+        }
         public List<DispositivoElectronico> Dispositivos
         {
             get { return this.dispositivos; }
+            set { this.dispositivos = value;}
         }
-
 
         public Cliente() 
         {   

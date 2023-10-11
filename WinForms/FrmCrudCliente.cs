@@ -20,15 +20,19 @@ namespace WinForms
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.clientes = new List<Cliente>();
+
         }
         private void ActualizarVisor()
         {
             lstBox.Items.Clear();
-            foreach (Cliente cliente in this.clientes)
+            if (this.clientes.Count >= 0)
             {
-                lstBox.Items.Add(cliente.MostrarVisor());
+                foreach (Cliente cliente in this.clientes)
+                {
+                    lstBox.Items.Add(cliente.MostrarVisor());
+                }
             }
+
         }
         public void FrmClientes_Load(object sender, EventArgs e)
         {
@@ -38,11 +42,25 @@ namespace WinForms
 
         public override void BtnVer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funciona");
+            int index = this.lstBox.SelectedIndex;
+            if (index == -1)
+            {
+                MessageBox.Show("Selecciona el elemento que deseas ver", "ERROR");
+                return;
+            }
+            Cliente cliente = this.clientes[index];
+            FrmVer frmVer = new FrmVer("cliente", cliente);
+            frmVer.ShowDialog();
         }
         public override void BtnAgregar_Click(object sender, EventArgs e)
         {
-            lstBox.Items.Add("gfdhsjkgf");
+            FrmAgregarCliente frmAgregarCliente = new FrmAgregarCliente();
+            frmAgregarCliente.ShowDialog();
+            if (frmAgregarCliente.seCreoCliente)
+            {
+                this.clientes.Add(frmAgregarCliente.cliente);
+                this.ActualizarVisor();
+            }
 
         }
         public override void BtnEliminar_Click(object sender, EventArgs e)
@@ -54,10 +72,8 @@ namespace WinForms
                 return;
             }
             Cliente cliente = this.clientes[index];
-            FrmEliminar frmEliminar = new FrmEliminar("cliente");
-
-            //DialogResult result = MessageBox.Show("Deseas eliminar el producto", "ATENCION", MessageBoxButtons.YesNo);
-            //if (result == System.Windows.Forms.DialogResult.Yes)
+            FrmEliminar frmEliminar = new FrmEliminar("cliente", cliente);
+            frmEliminar.ShowDialog();
             if (frmEliminar.Respuesta)
             {
                 this.clientes.RemoveAt(index);
@@ -67,7 +83,20 @@ namespace WinForms
         }
         public override void BtnModificar_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            int index = this.lstBox.SelectedIndex;
+            if (index == -1)
+            {
+                MessageBox.Show("Selecciona el elemento que deseas modificar", "ERROR");
+                return;
+            }
+            FrmAgregarCliente frmAgregarCliente = new FrmAgregarCliente();
+            frmAgregarCliente.ShowDialog();
+            if (frmAgregarCliente.seCreoCliente)
+            {
+                frmAgregarCliente.cliente.Dispositivos = this.clientes[index].Dispositivos;
+                this.clientes[index] = frmAgregarCliente.cliente;
+                this.ActualizarVisor();
+            }
         }
         public override void BtnOrdenar_Click(object sender, EventArgs e)
         {
@@ -113,6 +142,26 @@ namespace WinForms
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Error al Deserializar los Datos");
             }
+        }
+
+        private void FrmCrudCliente_Load(object sender, EventArgs e)
+        {
+            this.clientes = new List<Cliente>();
+            Cliente x = new Cliente(1486245, "juanito", ETipos.Monotributista, "Buenos Aires");
+            DispositivoElectronico y = new Celular(10, 2000, 542.4, "Samsung", "A23", EFactura.B, 20, 264, 18, 3);
+            x += y;
+            this.clientes.Add(x);
+            this.ActualizarVisor();
+        }
+
+        private void FrmCrudCliente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.SerializaciónXml();
+        }
+
+        private void FrmCrudCliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Estas seguro de cerrar la aplicacion", "ATENCION",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
     }
 }

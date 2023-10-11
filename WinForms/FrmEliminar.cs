@@ -49,12 +49,11 @@ namespace WinForms
         }
         private void ActualizarVisor()
         {
-            if (this.tipo == "cliente") 
-            { 
-                lstBox.Items.Clear();
-                lstBox.Items.Add(this.cliente.ToString());
+            if (this.tipo == "cliente")
+            {
+                LblCliente.Text = this.cliente.ToString();
             }
-            
+
         }
     }
 }

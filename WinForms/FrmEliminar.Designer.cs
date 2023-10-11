@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lstBox = new ListBox();
             BtnAceptar = new Button();
             BtnCancelar = new Button();
             label1 = new Label();
+            LblCliente = new Label();
             SuspendLayout();
-            // 
-            // lstBox
-            // 
-            lstBox.FormattingEnabled = true;
-            lstBox.ItemHeight = 15;
-            lstBox.Location = new Point(12, 42);
-            lstBox.Name = "lstBox";
-            lstBox.Size = new Size(453, 304);
-            lstBox.TabIndex = 0;
             // 
             // BtnAceptar
             // 
@@ -75,15 +66,24 @@
             label1.TabIndex = 3;
             label1.Text = "¿Deseas eliminarlo?";
             // 
+            // LblCliente
+            // 
+            LblCliente.AutoSize = true;
+            LblCliente.Location = new Point(23, 52);
+            LblCliente.Name = "LblCliente";
+            LblCliente.Size = new Size(60, 15);
+            LblCliente.TabIndex = 4;
+            LblCliente.Text = "LblCliente";
+            // 
             // FrmEliminar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(481, 430);
+            Controls.Add(LblCliente);
             Controls.Add(label1);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnAceptar);
-            Controls.Add(lstBox);
             Name = "FrmEliminar";
             Text = "Eliminar";
             Load += FrmEliminar_Load;
@@ -92,10 +92,9 @@
         }
 
         #endregion
-
-        private ListBox lstBox;
         private Button BtnAceptar;
         private Button BtnCancelar;
         private Label label1;
+        private Label LblCliente;
     }
 }

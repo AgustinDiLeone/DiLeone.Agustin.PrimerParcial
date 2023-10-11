@@ -10,27 +10,27 @@ using System.Windows.Forms;
 
 namespace WinForms
 {
-    public abstract partial class FrmCrud : Form
+    public partial class FrmCrud : Form
     {
         public FrmCrud()
         {
             InitializeComponent();
         }
 
-        public abstract void BtnVer_Click(object sender, EventArgs e);
+        public virtual void BtnVer_Click(object sender, EventArgs e) { }
 
-        public abstract void BtnAgregar_Click(object sender, EventArgs e);
+        public virtual void BtnAgregar_Click(object sender, EventArgs e) { }
 
-        public abstract void BtnModificar_Click(object sender, EventArgs e);
+        public virtual void BtnModificar_Click(object sender, EventArgs e) { }
 
-        public abstract void BtnEliminar_Click(object sender, EventArgs e);
+        public virtual void BtnEliminar_Click(object sender, EventArgs e) { }
 
         private void lstBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        public abstract void BtnOrdenar_Click(object sender, EventArgs e);
+        public virtual void BtnOrdenar_Click(object sender, EventArgs e) { }
 
         private void LblUsuarioConectado_Click(object sender, EventArgs e)
         {
