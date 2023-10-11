@@ -45,8 +45,12 @@ namespace WinForms
                 return;
             }
             Cliente cliente = this.clientes[index];
-            FrmVer frmVer = new FrmVer("cliente", cliente);
+            FrmDispositivos frmVer = new FrmDispositivos(cliente);
+
+            this.Hide();
             frmVer.ShowDialog();
+            this.clientes[index] = frmVer.ClienteModificado();
+            this.Show();
         }
         public override void BtnAgregar_Click(object sender, EventArgs e)
         {
@@ -123,11 +127,18 @@ namespace WinForms
         */
         public void SerializaciónXml(List<Cliente> listaClientes, string nombreArchivo)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Cliente>));
+            try
+            { 
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Cliente>));
 
-            using (TextWriter writer = new StreamWriter(nombreArchivo))
+                using (TextWriter writer = new StreamWriter(nombreArchivo))
+                {
+                    serializer.Serialize(writer, listaClientes);
+                }
+            }
+            catch (Exception ex)
             {
-                serializer.Serialize(writer, listaClientes);
+                MessageBox.Show("Error de serialización: " + ex.Message);
             }
         }
         /*
@@ -201,7 +212,11 @@ namespace WinForms
 
         private void FrmCrudCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("Estas seguro de cerrar la aplicacion", "ATENCION",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Estas seguro de cerrar la aplicacion", "ATENCION",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true; // Evita el cierre del formulario
+            }
         }
     }
 }

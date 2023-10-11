@@ -2,6 +2,7 @@
 
 namespace Entidades
 {
+    [Serializable]
     public abstract class DispositivoElectronico
     {
         protected int id;
@@ -19,7 +20,6 @@ namespace Entidades
         public DispositivoElectronico()
         {
             this.id = -1;
-            this.horaCompra = DateTime.Now;
             this.cantidad = -1;
             this.precioUnitario = -1;
             this.tipoFactura = EFactura.A;
@@ -49,12 +49,6 @@ namespace Entidades
         {
             get { return id; }
             set { this.id = value; }
-        }
-
-        public DateTime HoraCompra
-        {
-            get { return this.horaCompra; }
-            set { this.HoraCompra = value; }
         }
 
         public int Cantidad
@@ -96,7 +90,7 @@ namespace Entidades
 
         public static bool operator ==(DispositivoElectronico a, DispositivoElectronico b)
         {
-            return a.id == b.id || a.horaCompra == b.horaCompra;
+            return a.id == b.id && a.modelo == b.modelo;
         }
         public static bool operator !=(DispositivoElectronico a, DispositivoElectronico b)
         {
@@ -111,14 +105,13 @@ namespace Entidades
             {
                 retorno = this == (DispositivoElectronico)obj;
             }
-            return base.Equals(obj);
+            return retorno;
         }
 
         public virtual string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"ID: {this.id}");
-            sb.AppendLine($"HORA DE COMPRA: {this.horaCompra.ToString()}");
             sb.AppendLine($"CANTIDAD: {this.cantidad}");
             sb.AppendLine($"PRECIO UNITARIO: {this.precioUnitario.ToString()}");
             sb.AppendLine($"MARCA: {this.marca}");

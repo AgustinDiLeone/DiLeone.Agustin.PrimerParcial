@@ -4,9 +4,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entidades
 {
+    [Serializable]
+    [XmlInclude(typeof(DispositivoElectronico))]
+    [XmlInclude(typeof(Celular))]
+    [XmlInclude(typeof(Notebook))]
+    [XmlInclude(typeof(Televisor))]
     public class Cliente
     {
         protected string nombreEmpresa;
@@ -134,15 +140,23 @@ namespace Entidades
             return "";
 
         }
-        public string ToString()
+        public virtual string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"-----------------------------------------");
             sb.AppendLine($"NOMBRE / EMPRESA: {this.nombreEmpresa}");
             sb.AppendLine($"CUIT: {this.cuit}");
             sb.AppendLine($"TIPO: {this.tipoCliente.ToString()}");
             sb.AppendLine($"UBICACION: {this.ubicacion}");
+            return sb.ToString();
+        }
+        public virtual string ToString(bool paraConsola)
+        {
+
+            StringBuilder sb = new StringBuilder();
             sb.AppendLine($"-----------------------------------------");
+            sb.AppendLine(this.ToString());
+            sb.AppendLine($"-----------------------------------------");
+
             if (this.dispositivos != null)
             {
                 for (int i = 0; i < this.dispositivos.Count; i++)

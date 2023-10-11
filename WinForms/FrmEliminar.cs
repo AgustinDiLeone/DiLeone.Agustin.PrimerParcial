@@ -16,20 +16,29 @@ namespace WinForms
     {
         protected string tipo;
         protected bool respuesta;
-        protected Cliente cliente;
+        protected Cliente ?cliente;
+        protected DispositivoElectronico ?dispositivo;
 
         public bool Respuesta
         {
             get { return this.respuesta; }
         }
 
-        public FrmEliminar(string tipo, Cliente cliente)
+        public FrmEliminar(string tipo)
         {
             InitializeComponent();
-            this.CenterToScreen();
+            this.CenterToScreen();       
             this.tipo = tipo;
+        }
+        public FrmEliminar(string tipo, Cliente cliente) : this(tipo)
+        { 
             this.cliente = cliente;
-
+            this.dispositivo = null;
+        }
+        public FrmEliminar(string tipo, DispositivoElectronico dispositivo) : this(tipo)
+        {
+            this.cliente = null;
+            this.dispositivo = dispositivo;
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -51,9 +60,14 @@ namespace WinForms
         }
         private void ActualizarVisor()
         {
-            if (this.tipo == "cliente")
+            if (this.tipo == "cliente" && this.cliente != null)
             {
-                txtClientes.Text = this.cliente.ToString();
+                txtClientes.Text = this.cliente.ToString(true);
+            }
+            else if (this.tipo == "dispositivo" && this.dispositivo != null)
+            {
+                txtClientes.Text = this.dispositivo.ToString();
+
             }
         }
 

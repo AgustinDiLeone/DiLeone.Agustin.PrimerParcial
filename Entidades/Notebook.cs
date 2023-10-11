@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Serializable]
     public class Notebook:DispositivoElectronico
     {
         protected double pulgadas;
@@ -59,7 +60,7 @@ namespace Entidades
             sb.Append(base.ToString());
             sb.AppendLine($"PULGADAS: {this.pulgadas}");
             sb.AppendLine($"ALMACENAMIENTO: {this.almacenamiento}");
-            sb.AppendLine($"RAM: {this.RAM}");
+            sb.AppendLine($"ram: {this.RAM}");
             sb.AppendLine($"RESOLUCION: {this.resolucion}");
             sb.AppendLine($"SISTEMA OPERATIVO: {this.sistemaOperativo}");
 
