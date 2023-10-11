@@ -10,9 +10,10 @@ namespace WinForms
         {
             ApplicationConfiguration.Initialize();
             FrmLogIn frmLogIn = new FrmLogIn();
-            frmLogIn.ShowDialog();
+            //frmLogIn.ShowDialog();
+            frmLogIn.validacionClaveUsuario = true;
             if (frmLogIn.validacionClaveUsuario)
-                Application.Run(new CRUD());
+                Application.Run(new FrmCrudCliente());
               
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
