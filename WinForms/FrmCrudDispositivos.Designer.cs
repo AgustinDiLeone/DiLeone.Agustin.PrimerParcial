@@ -1,6 +1,6 @@
 ﻿namespace WinForms
 {
-    partial class FrmDispositivos
+    partial class FrmCrudDispositivos
     {
         /// <summary>
         /// Required designer variable.
@@ -41,10 +41,6 @@
             // BtnEliminar
             // 
             BtnEliminar.Click += BtnEliminar_Click_1;
-            // 
-            // BtnAgregar
-            // 
-            BtnAgregar.Click += BtnAgregar_Click_1;
             // 
             // BtnVolver
             // 

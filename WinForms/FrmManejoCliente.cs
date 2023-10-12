@@ -54,6 +54,7 @@ namespace WinForms
             if (nombre.Length == 0 || ubicacion.Length == 0 || cuit <= 0)
             {
                 MessageBox.Show("Ingrese datos validos", "ERROR");
+                return;
             }
             else
             {

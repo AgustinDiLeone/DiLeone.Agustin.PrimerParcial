@@ -5,16 +5,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinForms
 {
-    public partial class FrmDispositivos : FrmCrud
+    public partial class FrmCrudDispositivos : FrmCrud
     {
         protected Cliente cliente;
-        public FrmDispositivos(Cliente cliente)
+        public FrmCrudDispositivos(Cliente cliente)
         {
             InitializeComponent();
             this.CenterToScreen();
@@ -51,6 +52,26 @@ namespace WinForms
 
         private void BtnEliminar_Click_1(object sender, EventArgs e)
         {
+
+        }
+        public Cliente ClienteModificado()
+        {
+            return this.cliente;
+        }
+
+        public override void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmManejoDispositivo frmAgregarDispositivo = new FrmManejoDispositivo();
+            frmAgregarDispositivo.ShowDialog();
+            if (frmAgregarDispositivo.seCreo)
+            {
+                this.cliente.Dispositivos.Add(frmAgregarDispositivo.dispositivo);
+                this.ActualizarForm();
+            }
+
+        }
+        public override void BtnEliminar_Click(object sender, EventArgs e)
+        {
             int index = this.lstBox.SelectedIndex;
             if (index == -1)
             {
@@ -66,14 +87,21 @@ namespace WinForms
                 this.ActualizarForm();
             }
         }
-        public Cliente ClienteModificado()
+        public override void BtnModificar_Click(object sender, EventArgs e)
         {
-            return this.cliente;
-        }
-
-        private void BtnAgregar_Click_1(object sender, EventArgs e)
-        {
-
+            int index = this.lstBox.SelectedIndex;
+            if (index == -1)
+            {
+                MessageBox.Show("Selecciona el elemento que deseas modificar", "ERROR");
+                return;
+            }
+            FrmManejoDispositivo frmAgregarDispositivo = new FrmManejoDispositivo(this.cliente.Dispositivos[index]);
+            frmAgregarDispositivo.ShowDialog();
+            if (frmAgregarDispositivo.seCreo)
+            {
+                this.cliente.Dispositivos[index] = frmAgregarDispositivo.dispositivo;
+                this.ActualizarForm();
+            }
         }
     }
 }

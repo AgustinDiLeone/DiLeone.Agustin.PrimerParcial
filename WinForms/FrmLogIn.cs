@@ -7,7 +7,13 @@ namespace WinForms
     public partial class FrmLogIn : Form
     {
         public bool validacionClaveUsuario = false;
-        int intentos = 0;
+        public int intentos = 0;
+        private Usuario usuarioIngresado;
+
+        public Usuario Usuario
+        {
+            get { return usuarioIngresado; }
+        }
         public FrmLogIn()
         {
             InitializeComponent();
@@ -23,20 +29,24 @@ namespace WinForms
             }
             List<Usuario> list = DeserealizarUsuarios();
 
-            foreach (Usuario usuario in list)
+            if (this.intentos <= 3)
             {
-                if (txtCorreo.Text == usuario.correo)
+                foreach (Usuario usuario in list)
                 {
-                    if (txtClave.Text == usuario.clave)
+                    if (txtCorreo.Text == usuario.correo)
                     {
-                        this.validacionClaveUsuario = true;
-                        this.Close();
-                        return;
+                        if (txtClave.Text == usuario.clave)
+                        {
+                            this.validacionClaveUsuario = true;
+                            this.usuarioIngresado = usuario;
+                            this.Close();
+                            return;
+                        }
                     }
                 }
             }
             MessageBox.Show("El usuario es invalido", "ERROR");
-
+            this.intentos++;
         }
         private static List<Usuario> DeserealizarUsuarios()
         {
@@ -81,7 +91,12 @@ namespace WinForms
             {
                 txtClave.UseSystemPasswordChar = true;
             }
-                   
+
+        }
+
+        private void FrmLogIn_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

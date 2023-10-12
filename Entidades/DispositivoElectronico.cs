@@ -6,13 +6,11 @@ namespace Entidades
     public abstract class DispositivoElectronico
     {
         protected int id;
-        protected DateTime horaCompra;
         protected int cantidad;
         protected string marca;
         protected string modelo;
         protected double precioUnitario;
         protected EFactura tipoFactura;
-        protected bool entregado;
 
         public abstract string MostrarVisor();
 
@@ -77,12 +75,6 @@ namespace Entidades
         {
             get { return this.tipoFactura; }
             set { this.tipoFactura = value; }
-        }
-
-        public bool Entregado
-        {
-            get { return this.entregado; }
-            set { this.entregado = value; }
         }
         #endregion
 

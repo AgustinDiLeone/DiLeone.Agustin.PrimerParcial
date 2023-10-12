@@ -13,7 +13,7 @@ namespace WinForms
             //frmLogIn.ShowDialog();
             frmLogIn.validacionClaveUsuario = true;
             if (frmLogIn.validacionClaveUsuario)
-                Application.Run(new FrmCrudCliente());
+                Application.Run(new FrmCrudCliente());//(frmLogIn.Usuario));
               
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.

@@ -17,12 +17,17 @@ namespace WinForms
     public partial class FrmCrudCliente : FrmCrud
     {
         private List<Cliente> clientes;
+        //private Usuario usuarioIngresado;
         public FrmCrudCliente()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             //this.clientes = new List<Cliente>();
 
+        }
+        public FrmCrudCliente(Usuario usuario):this() 
+        {
+            //this.usuarioIngresado = usuario;
         }
         private void ActualizarVisor()
         {
@@ -45,7 +50,7 @@ namespace WinForms
                 return;
             }
             Cliente cliente = this.clientes[index];
-            FrmDispositivos frmVer = new FrmDispositivos(cliente);
+            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(cliente);
 
             this.Hide();
             frmVer.ShowDialog();
@@ -188,6 +193,7 @@ namespace WinForms
             this.clientes = this.DeserializacionXml(path);
             if (this.clientes == null)
                 this.clientes = new List<Cliente>();
+            LblUsuarioConectado.Text = "agregar";// this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
              /*
             this.clientes = new List<Cliente>();
             Cliente x = new Cliente(1486245, "juanito", ETipos.Monotributista, "Buenos Aires");
