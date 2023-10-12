@@ -103,5 +103,17 @@ namespace WinForms
                 this.ActualizarForm();
             }
         }
+
+        public override void BtnVer_Click(object sender, EventArgs e)
+        {
+            int index = this.lstBox.SelectedIndex;
+            if (index == -1)
+            {
+                MessageBox.Show("Selecciona el elemento que deseas ver", "ERROR");
+                return;
+            }
+            FrmVer frmVer = new FrmVer(this.cliente.Dispositivos[index]);
+            frmVer.ShowDialog();
+        }
     }
 }

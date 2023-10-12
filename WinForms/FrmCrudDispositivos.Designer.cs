@@ -64,14 +64,14 @@
             lblCliente.Text = "label1";
             lblCliente.Click += lblCliente_Click;
             // 
-            // FrmDispositivos
+            // FrmCrudDispositivos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 492);
             Controls.Add(lblCliente);
             Controls.Add(BtnVolver);
-            Name = "FrmDispositivos";
+            Name = "FrmCrudDispositivos";
             Text = "FrmDispositivos";
             Load += FrmVer_Load;
             Controls.SetChildIndex(BtnVolver, 0);
