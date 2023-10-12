@@ -60,14 +60,13 @@ namespace WinForms
         }
         private void ActualizarVisor()
         {
-            if (this.tipo == "cliente" && this.cliente != null)
+            if (this.tipo == "cliente") //&& (this.cliente.ToString() != null))
             {
                 txtClientes.Text = this.cliente.ToString(true);
             }
-            else if (this.tipo == "dispositivo" && this.dispositivo != null)
+            else if(this.tipo == "dispositivo")// && (this.dispositivo.ToString() != null))
             {
                 txtClientes.Text = this.dispositivo.ToString();
-
             }
         }
 

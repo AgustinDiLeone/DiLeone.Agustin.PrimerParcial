@@ -42,6 +42,10 @@
             // 
             BtnEliminar.Click += BtnEliminar_Click_1;
             // 
+            // BtnAgregar
+            // 
+            BtnAgregar.Click += BtnAgregar_Click_1;
+            // 
             // BtnVolver
             // 
             BtnVolver.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);

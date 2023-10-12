@@ -20,13 +20,13 @@ namespace WinForms
             this.CenterToScreen();
             this.cliente = cliente;
 
-            Celular celular = new Celular(10,251,5478,"Samsung","A23",EFactura.B,20,264,8,3);
+            Celular celular = new Celular(10, 251, 5478, "Samsung", "A23", EFactura.B, 20, 264, 8, 3);
             this.cliente += celular;
         }
 
         private void ActualizarForm()
         {
-            lblCliente.Text = this.cliente.ToString();
+            lstBox.Items.Clear();
             foreach (DispositivoElectronico dispo in this.cliente.Dispositivos)
             {
                 lstBox.Items.Add(dispo.MostrarVisor());
@@ -40,6 +40,7 @@ namespace WinForms
 
         private void FrmVer_Load(object sender, EventArgs e)
         {
+            lblCliente.Text = this.cliente.ToString();
             this.ActualizarForm();
         }
 
@@ -61,13 +62,18 @@ namespace WinForms
             frmEliminar.ShowDialog();
             if (frmEliminar.Respuesta)
             {
-                this.cliente.Dispositivos.RemoveAt(index);
+                this.cliente.Dispositivos.Remove(dispo);//  RemoveAt(index);
                 this.ActualizarForm();
             }
         }
         public Cliente ClienteModificado()
         {
             return this.cliente;
+        }
+
+        private void BtnAgregar_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
