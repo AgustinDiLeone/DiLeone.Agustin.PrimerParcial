@@ -28,22 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TxtDispositivo = new TextBox();
             BtnVolver = new Button();
+            TxtDispositivo = new TextBox();
             SuspendLayout();
-            // 
-            // TxtDispositivo
-            // 
-            TxtDispositivo.Enabled = false;
-            TxtDispositivo.HideSelection = false;
-            TxtDispositivo.Location = new Point(26, 26);
-            TxtDispositivo.Multiline = true;
-            TxtDispositivo.Name = "TxtDispositivo";
-            TxtDispositivo.ReadOnly = true;
-            TxtDispositivo.ScrollBars = ScrollBars.Vertical;
-            TxtDispositivo.ShortcutsEnabled = false;
-            TxtDispositivo.Size = new Size(396, 341);
-            TxtDispositivo.TabIndex = 0;
             // 
             // BtnVolver
             // 
@@ -55,13 +42,24 @@
             BtnVolver.UseVisualStyleBackColor = true;
             BtnVolver.Click += BtnVolver_Click;
             // 
+            // TxtDispositivo
+            // 
+            TxtDispositivo.Location = new Point(26, 41);
+            TxtDispositivo.Multiline = true;
+            TxtDispositivo.Name = "TxtDispositivo";
+            TxtDispositivo.ReadOnly = true;
+            TxtDispositivo.ScrollBars = ScrollBars.Vertical;
+            TxtDispositivo.Size = new Size(396, 329);
+            TxtDispositivo.TabIndex = 2;
+            TxtDispositivo.TextChanged += textBox1_TextChanged;
+            // 
             // FrmVer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(459, 454);
-            Controls.Add(BtnVolver);
             Controls.Add(TxtDispositivo);
+            Controls.Add(BtnVolver);
             Name = "FrmVer";
             Text = "FrmVer";
             Load += FrmVer_Load;
@@ -70,8 +68,7 @@
         }
 
         #endregion
-
-        private TextBox TxtDispositivo;
         private Button BtnVolver;
+        private TextBox TxtDispositivo;
     }
 }

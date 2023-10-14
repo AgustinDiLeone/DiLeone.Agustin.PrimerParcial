@@ -15,6 +15,8 @@ namespace WinForms
         public FrmCrud()
         {
             InitializeComponent();
+            BtnCaracteristicaUno.Checked = true;
+            BtnAscendente.Checked = true;
         }
 
         public virtual void BtnVer_Click(object sender, EventArgs e) { }
@@ -32,7 +34,7 @@ namespace WinForms
 
         public virtual void BtnOrdenar_Click(object sender, EventArgs e) { }
 
-        private void LblUsuarioConectado_Click(object sender, EventArgs e)
+        public virtual void LblUsuarioConectado_Click(object sender, EventArgs e)
         {
 
         }

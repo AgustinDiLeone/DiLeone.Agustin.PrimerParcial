@@ -30,15 +30,18 @@
         {
             lstBox = new ListBox();
             grpOrdenCarac = new GroupBox();
+            BtnCaracteristicaDos = new RadioButton();
+            BtnCaracteristicaUno = new RadioButton();
             grpOrden = new GroupBox();
-            BtnDescendente = new CheckBox();
-            BtnAscendente = new CheckBox();
+            BtnDescendente = new RadioButton();
+            BtnAscendente = new RadioButton();
             BtnOrdenar = new Button();
             BtnVer = new Button();
             BtnModificar = new Button();
             BtnEliminar = new Button();
             BtnAgregar = new Button();
             LblUsuarioConectado = new Label();
+            grpOrdenCarac.SuspendLayout();
             grpOrden.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,12 +58,36 @@
             // 
             // grpOrdenCarac
             // 
+            grpOrdenCarac.Controls.Add(BtnCaracteristicaDos);
+            grpOrdenCarac.Controls.Add(BtnCaracteristicaUno);
             grpOrdenCarac.Location = new Point(483, 63);
             grpOrdenCarac.Name = "grpOrdenCarac";
             grpOrdenCarac.Size = new Size(120, 102);
             grpOrdenCarac.TabIndex = 1;
             grpOrdenCarac.TabStop = false;
             grpOrdenCarac.Text = "Caracteristica";
+            // 
+            // BtnCaracteristicaDos
+            // 
+            BtnCaracteristicaDos.AutoSize = true;
+            BtnCaracteristicaDos.Location = new Point(18, 57);
+            BtnCaracteristicaDos.Name = "BtnCaracteristicaDos";
+            BtnCaracteristicaDos.Size = new Size(93, 19);
+            BtnCaracteristicaDos.TabIndex = 5;
+            BtnCaracteristicaDos.TabStop = true;
+            BtnCaracteristicaDos.Text = "Descendente";
+            BtnCaracteristicaDos.UseVisualStyleBackColor = true;
+            // 
+            // BtnCaracteristicaUno
+            // 
+            BtnCaracteristicaUno.AutoSize = true;
+            BtnCaracteristicaUno.Location = new Point(18, 22);
+            BtnCaracteristicaUno.Name = "BtnCaracteristicaUno";
+            BtnCaracteristicaUno.Size = new Size(87, 19);
+            BtnCaracteristicaUno.TabIndex = 4;
+            BtnCaracteristicaUno.TabStop = true;
+            BtnCaracteristicaUno.Text = "Ascendente";
+            BtnCaracteristicaUno.UseVisualStyleBackColor = true;
             // 
             // grpOrden
             // 
@@ -76,20 +103,22 @@
             // BtnDescendente
             // 
             BtnDescendente.AutoSize = true;
-            BtnDescendente.Location = new Point(12, 56);
+            BtnDescendente.Location = new Point(12, 57);
             BtnDescendente.Name = "BtnDescendente";
-            BtnDescendente.Size = new Size(97, 19);
-            BtnDescendente.TabIndex = 2;
-            BtnDescendente.Text = "Descendiente";
+            BtnDescendente.Size = new Size(93, 19);
+            BtnDescendente.TabIndex = 3;
+            BtnDescendente.TabStop = true;
+            BtnDescendente.Text = "Descendente";
             BtnDescendente.UseVisualStyleBackColor = true;
             // 
             // BtnAscendente
             // 
             BtnAscendente.AutoSize = true;
-            BtnAscendente.Location = new Point(12, 31);
+            BtnAscendente.Location = new Point(12, 22);
             BtnAscendente.Name = "BtnAscendente";
-            BtnAscendente.Size = new Size(88, 19);
-            BtnAscendente.TabIndex = 1;
+            BtnAscendente.Size = new Size(87, 19);
+            BtnAscendente.TabIndex = 2;
+            BtnAscendente.TabStop = true;
             BtnAscendente.Text = "Ascendente";
             BtnAscendente.UseVisualStyleBackColor = true;
             // 
@@ -170,6 +199,8 @@
             Name = "FrmCrud";
             Text = "FrmCrud";
             Load += FrmCrud_Load;
+            grpOrdenCarac.ResumeLayout(false);
+            grpOrdenCarac.PerformLayout();
             grpOrden.ResumeLayout(false);
             grpOrden.PerformLayout();
             ResumeLayout(false);
@@ -181,13 +212,15 @@
         public ListBox lstBox;
         public GroupBox grpOrdenCarac;
         public GroupBox grpOrden;
-        public CheckBox BtnAscendente;
-        public CheckBox BtnDescendente;
         public Button BtnOrdenar;
         public Button BtnVer;
         public Button BtnModificar;
         public Button BtnEliminar;
         public Button BtnAgregar;
         public Label LblUsuarioConectado;
+        private RadioButton BtnDescendente;
+        private RadioButton BtnAscendente;
+        private RadioButton BtnCaracteristicaDos;
+        private RadioButton BtnCaracteristicaUno;
     }
 }

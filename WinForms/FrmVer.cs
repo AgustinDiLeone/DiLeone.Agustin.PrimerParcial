@@ -32,5 +32,10 @@ namespace WinForms
             TxtDispositivo.SelectionLength = 0;
             TxtDispositivo.Text = this.dispositivo.ToString();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

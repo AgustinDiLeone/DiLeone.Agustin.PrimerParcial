@@ -15,6 +15,7 @@ namespace WinForms
     public partial class FrmCrudDispositivos : FrmCrud
     {
         protected Cliente cliente;
+        //private Usuario usuarioIngresado;
         public FrmCrudDispositivos(Cliente cliente)
         {
             InitializeComponent();
@@ -23,6 +24,10 @@ namespace WinForms
 
             Celular celular = new Celular(10, 251, 5478, "Samsung", "A23", EFactura.B, 20, 264, 8, 3);
             this.cliente += celular;
+        }
+        public FrmCrudDispositivos(Cliente cliente, Usuario usuario) : this(cliente)
+        {
+            //this.usuarioIngresado = usuario;
         }
 
         private void ActualizarForm()
@@ -42,6 +47,7 @@ namespace WinForms
         private void FrmVer_Load(object sender, EventArgs e)
         {
             lblCliente.Text = this.cliente.ToString();
+            //LblUsuarioConectado.Text = this.usuarioIngresado..nombre + " - " + DateTime.Now.ToString();
             this.ActualizarForm();
         }
 

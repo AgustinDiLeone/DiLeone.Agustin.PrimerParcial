@@ -60,9 +60,17 @@ namespace Entidades
             sb.Append(base.ToString());
             sb.AppendLine($"PULGADAS: {this.pulgadas}");
             sb.AppendLine($"ALMACENAMIENTO: {this.almacenamiento}");
-            sb.AppendLine($"ram: {this.RAM}");
+            sb.AppendLine($"RAM: {this.RAM}");
             sb.AppendLine($"RESOLUCION: {this.resolucion}");
             sb.AppendLine($"SISTEMA OPERATIVO: {this.sistemaOperativo}");
+            if (this.SSD)
+            {
+                sb.AppendLine($"SSD: SI");
+            }
+            else
+            {
+                sb.AppendLine($"SSD: NO");
+            }
 
             return sb.ToString();
         }

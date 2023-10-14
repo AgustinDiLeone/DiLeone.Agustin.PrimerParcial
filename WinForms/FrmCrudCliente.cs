@@ -17,7 +17,7 @@ namespace WinForms
     public partial class FrmCrudCliente : FrmCrud
     {
         private List<Cliente> clientes;
-        //private Usuario usuarioIngresado;
+        private Usuario usuarioIngresado;
         public FrmCrudCliente()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace WinForms
         }
         public FrmCrudCliente(Usuario usuario):this() 
         {
-            //this.usuarioIngresado = usuario;
+            this.usuarioIngresado = usuario;
         }
         private void ActualizarVisor()
         {
@@ -193,7 +193,7 @@ namespace WinForms
             this.clientes = this.DeserializacionXml(path);
             if (this.clientes == null)
                 this.clientes = new List<Cliente>();
-            LblUsuarioConectado.Text = "agregar";// this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
+            //LblUsuarioConectado.Text = this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
              /*
             this.clientes = new List<Cliente>();
             Cliente x = new Cliente(1486245, "juanito", ETipos.Monotributista, "Buenos Aires");
