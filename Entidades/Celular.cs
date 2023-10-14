@@ -16,6 +16,7 @@ namespace Entidades
         protected int ram;
         protected int cantCamaras;
 
+#region Getters Y Setters
         public double Pulgadas
         {
             get { return this.pulgadas; }
@@ -37,6 +38,7 @@ namespace Entidades
             get { return this.cantCamaras; }
             set { this.cantCamaras = value; }
         }
+#endregion
 
         public Celular():base()
         {
@@ -48,22 +50,17 @@ namespace Entidades
         }
         public Celular(int id, int cantidad, double precio) : base(id, cantidad, precio){}
         public Celular(int id, int cantidad, double precio, string modelo, string marca,
-            EFactura tipoFactura) : base(id, cantidad, precio, modelo, marca, tipoFactura) { }
-        public Celular(int id, int cantidad, double precio, double pulgadas, int almacenamiento,
-            int RAM, int cantCamaras) :base(id, cantidad, precio)
+            EFactura tipoFactura, double pulgadas, int almacenamiento, int cantCamaras) : base(id,
+                cantidad, precio, modelo, marca, tipoFactura) 
         {
             this.pulgadas = pulgadas;
             this.almacenamiento = almacenamiento;
             this.cantCamaras = cantCamaras;
-            this.ram = RAM;
         }
         public Celular(int id, int cantidad, double precio, string modelo, string marca, 
             EFactura tipoFactura, double pulgadas, int almacenamiento, int RAM,
-            int cantCamaras) : base(id, cantidad, precio, modelo, marca, tipoFactura)
+            int cantCamaras) : this(id, cantidad, precio, modelo, marca, tipoFactura,pulgadas,almacenamiento,cantCamaras)
         {
-            this.pulgadas = pulgadas;
-            this.almacenamiento = almacenamiento;
-            this.cantCamaras = cantCamaras;
             this.ram = RAM;
         }
         public override string MostrarVisor()

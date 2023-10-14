@@ -16,7 +16,41 @@ namespace Entidades
         protected string sistemaOperativo;
         protected bool SSD;
 
-        public Notebook()
+        #region Getters Y Setters
+        public double Pulgadas
+        {
+            get { return this.pulgadas; }
+
+            set { this.pulgadas = value; }
+        }
+        public int Resolucion
+        {
+            get { return this.resolucion; }
+            set { this.resolucion = value; }
+        }
+        public int Almacenamiento
+        {
+            get { return this.almacenamiento; }
+            set { this.almacenamiento = value; }
+        }
+        public int Ram
+        {
+            get { return this.RAM; }
+            set { this.RAM = value; }
+        }
+        public string SistemaOperativo
+        {
+            get { return this.sistemaOperativo; }
+            set { this.sistemaOperativo = value; }
+        }
+        public bool Ssd
+        {
+            get { return this.SSD; }
+            set { this.SSD = value; }
+        }
+
+        #endregion
+        public Notebook() : base()
         {
 
             this.pulgadas = 0;
@@ -26,28 +60,29 @@ namespace Entidades
             this.sistemaOperativo = "NO SE INGRESO";
 
         }
-        public Notebook(int id, int cantidad, double precio) : base(id, cantidad, precio) { }
         public Notebook(int id, int cantidad, double precio, string modelo, string marca,
-            EFactura tipoFactura) : base(id, cantidad, precio, modelo, marca, tipoFactura) { }
-        public Notebook(int id, int cantidad, double precio, double pulgadas, int almacenamiento,
-            int RAM, int resolucion, string sistemaOperativo) : base(id, cantidad, precio)
+            EFactura tipoFactura, double pulgadas, int almacenamiento,
+            int resolucion) : base(id, cantidad, precio, modelo, marca, tipoFactura)
         {
             this.pulgadas = pulgadas;
             this.almacenamiento = almacenamiento;
             this.resolucion = resolucion;
-            this.sistemaOperativo = sistemaOperativo;
+            this.sistemaOperativo = "NO SE INGRESO";
+        }
+        public Notebook(int id, int cantidad, double precio, string modelo, string marca,
+            EFactura tipoFactura, double pulgadas, int almacenamiento,
+            int RAM, int resolucion, bool SSD) : this(id, cantidad, precio, modelo, marca, tipoFactura,
+                pulgadas,almacenamiento,resolucion)
+        {
+
             this.RAM = RAM;
+            this.SSD = SSD;
         }
         public Notebook(int id, int cantidad, double precio, string modelo, string marca,
             EFactura tipoFactura, double pulgadas, int almacenamiento, int RAM,
-             int resolucion, string sistemaOperativo, bool SSD) : base(id, cantidad, precio, modelo, marca, tipoFactura)
+             int resolucion, string sistemaOperativo, bool SSD) : this(id, cantidad, precio, modelo, marca, tipoFactura,pulgadas,almacenamiento,RAM,resolucion,SSD)
         {
-            this.pulgadas = pulgadas;
-            this.almacenamiento = almacenamiento;
-            this.resolucion = resolucion;
             this.sistemaOperativo = sistemaOperativo;
-            this.RAM = RAM;
-            this.SSD = SSD;
         }
         public override string MostrarVisor()
         {

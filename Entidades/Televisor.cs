@@ -13,29 +13,47 @@ namespace Entidades
         protected double resolucion;
         protected bool smartTv;
 
+        #region Getters Y Setters
+        public double Pulgadas
+        {
+            get { return this.pulgadas; }
 
-        public Televisor()
+            set { this.pulgadas = value; }
+        }
+        public double Resolucion
+        {
+            get { return this.resolucion; }
+            set { this.resolucion = value; }
+        }
+        public bool SmartTv
+        {
+            get { return this.smartTv; }
+            set { this.smartTv = value; }
+        }
+        #endregion
+
+        public Televisor(): base()
         {
             this.pulgadas = 0;
             this.resolucion = 0;
 
         }
-        public Televisor(int id, int cantidad, double precio) : base(id, cantidad, precio) { }
         public Televisor(int id, int cantidad, double precio, string modelo, string marca,
-            EFactura tipoFactura) : base(id, cantidad, precio, modelo, marca, tipoFactura) { }
-        public Televisor(int id, int cantidad, double precio, double pulgadas, int resolucion,
-            bool smartTv) : base(id, cantidad, precio)
+            EFactura tipoFactura, int resolucion, double pulgadas) : base(id, cantidad, precio, modelo, marca, tipoFactura)
         {
             this.pulgadas = pulgadas;
             this.resolucion = resolucion;
-            this.smartTv = smartTv;
+        }
+        public Televisor(int id, int cantidad, double precio, string modelo, string marca,
+            EFactura tipoFactura, double pulgadas, int resolucion) : base(id, cantidad, precio, modelo, marca, tipoFactura)
+        {
+            this.pulgadas = pulgadas;
+            this.resolucion = resolucion;
         }
         public Televisor(int id, int cantidad, double precio, string modelo, string marca,
             EFactura tipoFactura, double pulgadas, int resolucion,
-            bool smartTv) : base(id, cantidad, precio, modelo, marca, tipoFactura)
+            bool smartTv) : this(id, cantidad, precio, modelo, marca, tipoFactura,pulgadas,resolucion)
         {
-            this.pulgadas = pulgadas;
-            this.resolucion = resolucion;
             this.smartTv = smartTv;
         }
         public override string MostrarVisor()

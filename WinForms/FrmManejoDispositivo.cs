@@ -58,7 +58,7 @@ namespace WinForms
             else
             {
                 this.seCreo = true;
-                this.dispositivo = new Celular(id, cantidad, precio, modelo, marca, tipo);
+                //this.dispositivo = new Celular(id, cantidad, precio, modelo, marca, tipo);
                 this.DialogResult = DialogResult.OK;
             }
 

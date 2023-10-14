@@ -143,31 +143,10 @@ namespace WinForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error de serialización: " + ex.Message);
+                MessageBox.Show("Error de serialización del archivo, llamar al equipo tecnico","ERROR");
             }
         }
-        /*
-        private void DeserializacionXml()
-        {
-            try
-            {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                path += @"\ListaDeClientes.xml";
-                using (XmlTextReader reader = new XmlTextReader(path))
-                {
-                    XmlSerializer ser = new XmlSerializer((typeof(List<Cliente>)));
 
-                    this.clientes = (List<Cliente>)ser.Deserialize(reader);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Error al Deserializar los Datos");
-            }
-        }
-        */
         public List<Cliente> DeserializacionXml(string nombreArchivo)
         {
             try
@@ -180,7 +159,8 @@ namespace WinForms
                 }
             }
             catch 
-            { 
+            {
+                MessageBox.Show("Error en la deserealizacion del archivo, llamar al equipo tecnico", "ERROR");
                 return this.clientes = new List<Cliente>();
             }
 
@@ -194,16 +174,18 @@ namespace WinForms
             if (this.clientes == null)
                 this.clientes = new List<Cliente>();
             //LblUsuarioConectado.Text = this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
-             /*
-            this.clientes = new List<Cliente>();
+            /*
             Cliente x = new Cliente(1486245, "juanito", ETipos.Monotributista, "Buenos Aires");
-            DispositivoElectronico y = new Celular(10, 2000, 542.4, "Samsung", "A23", EFactura.B, 20, 264, 18, 3);
+            DispositivoElectronico y = new Celular();
+            DispositivoElectronico t = new Celular(25,254,24,"dfg","df",EFactura.B,25,57,3);
+
             DispositivoElectronico z = new Celular(10, 2000, 542.4, "Samsung", "A23", EFactura.B, 20, 264, 18, 3);
             x += y;
             x += z;
+            x+= t;
             this.clientes.Add(x);
-            */
             
+            */
             //MessageBox.Show(this.clientes.ToString());
             this.ActualizarVisor();
         }
