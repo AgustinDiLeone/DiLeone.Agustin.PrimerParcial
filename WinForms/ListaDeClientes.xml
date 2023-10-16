@@ -50,6 +50,42 @@
         <Ram>8</Ram>
         <CantCamaras>3</CantCamaras>
       </DispositivoElectronico>
+      <DispositivoElectronico xsi:type="Celular">
+        <Id>25</Id>
+        <Cantidad>45</Cantidad>
+        <Marca>El Mejor</Marca>
+        <Modelo>18</Modelo>
+        <PrecioUnitario>4576</PrecioUnitario>
+        <TipoFactura>A</TipoFactura>
+        <Pulgadas>51</Pulgadas>
+        <Almacenamiento>62184169</Almacenamiento>
+        <Ram>51</Ram>
+        <CantCamaras>51</CantCamaras>
+      </DispositivoElectronico>
+      <DispositivoElectronico xsi:type="Celular">
+        <Id>10</Id>
+        <Cantidad>65</Cantidad>
+        <Marca>ljg</Marca>
+        <Modelo>kjvh</Modelo>
+        <PrecioUnitario>654</PrecioUnitario>
+        <TipoFactura>A</TipoFactura>
+        <Pulgadas>5</Pulgadas>
+        <Almacenamiento>5</Almacenamiento>
+        <Ram>51</Ram>
+        <CantCamaras>5</CantCamaras>
+      </DispositivoElectronico>
+      <DispositivoElectronico xsi:type="Celular">
+        <Id>10</Id>
+        <Cantidad>54</Cantidad>
+        <Marca> ljg</Marca>
+        <Modelo>ljg</Modelo>
+        <PrecioUnitario>51</PrecioUnitario>
+        <TipoFactura>A</TipoFactura>
+        <Pulgadas>51</Pulgadas>
+        <Almacenamiento>51</Almacenamiento>
+        <Ram>21</Ram>
+        <CantCamaras>51</CantCamaras>
+      </DispositivoElectronico>
     </Dispositivos>
   </Cliente>
   <Cliente>

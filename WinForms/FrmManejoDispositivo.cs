@@ -25,22 +25,50 @@ namespace WinForms
         {
             InitializeComponent();
             this.CenterToScreen();
+            LblTitulo.Text = "Agregar Dispositivo";
         }
         public FrmManejoDispositivo(DispositivoElectronico dispositivo) : this()
         {
+            LblTitulo.Text = "Modificar Dispositivo";
             this.dispositivo = dispositivo;
             TxtId.Text = this.dispositivo.Id.ToString();
             TxtCantidad.Text = this.dispositivo.Cantidad.ToString();
             TxtMarca.Text = this.dispositivo.Marca;
             TxtModelo.Text = this.dispositivo.Modelo;
             TxtPrecio.Text = this.dispositivo.PrecioUnitario.ToString();
-            //CmbTipo.SelectedItem = this.dispositivo.TipoCliente;
+            foreach (TabPage tabPage in TabDispositivos.TabPages)
+            {
+                tabPage.Enabled = false;
+            }
+            switch (this.dispositivo)
+            {
+                case Celular:
+                    PageCelular.Enabled = true;
+                    Celular celular = this.dispositivo as Celular;
+                    TxtCantCamarasCelular.Text = celular.CantCamaras.ToString();
+                    TxtAlmacenamientoCelular.Text = celular.Almacenamiento.ToString();
+                    TxtPulgadasCelular.Text = celular.Pulgadas.ToString();
+                    TxtRamCelular.Text = celular.Ram.ToString(); 
+                    break;
+                case Notebook:
+                    PageNotebook.Enabled = true;
+                    Notebook notebook = this.dispositivo as Notebook;
+                    TxtPulgadasNote.Text = notebook.Pulgadas.ToString();
+                    TxtResolucionNote.Text = notebook.Resolucion.ToString();
+                    TxtRamNote.Text = notebook.Ram.ToString();
+                    TxtSONote.Text = notebook.SistemaOperativo;
+                    TxtAlmacenamientoNote.Text = notebook.Almacenamiento.ToString();
+                    checkSSD.Checked = notebook.Ssd;
+                    break;
+                case Televisor:
+                    PageTelevisor.Enabled = true;
+                    Televisor televisor = this.dispositivo as Televisor;
+                    TxtPulgadasTele.Text = televisor.Pulgadas.ToString();
+                    TxtResolucionTele.Text = televisor.Resolucion.ToString();
+                    checkSmartTv.Checked = televisor.SmartTv;
+                    break;
 
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
+            }
         }
 
         private void FrmManejoDispositivo_Load(object sender, EventArgs e)
@@ -53,13 +81,43 @@ namespace WinForms
         {
             if (true)
             {
-
-            }
-            else
-            {
-                this.seCreo = true;
-                //this.dispositivo = new Celular(id, cantidad, precio, modelo, marca, tipo);
-                this.DialogResult = DialogResult.OK;
+                bool verificacion = VerificarDatosGenerales();
+                if (!verificacion)
+                {
+                    return;
+                }
+                int pageIndex = TabDispositivos.SelectedIndex;
+                switch (pageIndex)
+                {
+                    case 0:
+                        var nuevoCelular = CrearCelular();
+                        if (nuevoCelular.Item1 == false)
+                        { return; }
+                        else
+                        {
+                            this.seCreo = true;
+                            this.dispositivo = nuevoCelular.Item2;
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        break;
+                    case 1:
+                        var nuevaNotebook = CrearCelular();
+                        if (nuevaNotebook.Item1 == false)
+                        { return; }
+                        else
+                        {
+                            this.seCreo = true;
+                            this.dispositivo = nuevaNotebook.Item2;
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        break;
+                    case 2:
+                        MessageBox.Show("Seleccionaste el televisor", "ERROR");
+                        break;
+                    case -1:
+                        MessageBox.Show("Seleccione y complete el dispositivo deseado", "ERROR");
+                        return;
+                }
             }
 
         }
@@ -69,26 +127,22 @@ namespace WinForms
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void VerificarDatosGenerales()
+        private bool VerificarDatosGenerales()
         {
             if (!int.TryParse(this.TxtId.Text, out this.id))
             {
                 MessageBox.Show("Ingrese un id valido", "ERROR");
-                return;
+                return false;
             }
             if (!int.TryParse(this.TxtCantidad.Text, out this.cantidad))
             {
                 MessageBox.Show("Ingrese una cantidad valido", "ERROR");
-                return;
+                return false;
             }
             if (!double.TryParse(this.TxtPrecio.Text, out this.precio))
             {
                 MessageBox.Show("Ingrese un precio valido", "ERROR");
-                return;
+                return false;
             }
 
             this.marca = this.TxtMarca.Text;
@@ -99,8 +153,80 @@ namespace WinForms
             if (marca.Length == 0 || modelo.Length == 0 || id <= 0 || cantidad <= 0 || precio <= 0)
             {
                 MessageBox.Show("Ingrese datos validos", "ERROR");
-                return;
+                return false;
             }
+            else
+                return true;
+        }
+        private (bool, Celular) CrearCelular()
+        {
+
+            if (!double.TryParse(this.TxtPulgadasCelular.Text, out double pulgadas))
+            {
+                MessageBox.Show("Ingrese pulgadas validas", "ERROR");
+                return (false, null);
+            }
+            if (!int.TryParse(this.TxtAlmacenamientoCelular.Text, out int almacenamiento))
+            {
+                MessageBox.Show("Ingrese un almacenamiento  valido", "ERROR");
+                return (false, null);
+            }
+            if (!int.TryParse(this.TxtRamCelular.Text, out int ram))
+            {
+                MessageBox.Show("Ingrese una cantidad de memoria ram valida", "ERROR");
+                return (false, null);
+            }
+            if (!int.TryParse(this.TxtCantCamarasCelular.Text, out int cantCamaras))
+            {
+                MessageBox.Show("Ingrese una cantidad de camaras validas", "ERROR");
+                return (false, null);
+            }
+
+            Celular nuevoCelular = new Celular(this.id, this.cantidad, this.precio, this.modelo, this.marca, this.tipo,
+                pulgadas, almacenamiento, ram, cantCamaras);
+
+            return (true, nuevoCelular);
+
+        }
+        private (bool, Notebook) CrearNotebook()
+        {
+
+            if (!double.TryParse(this.TxtPulgadasNote.Text, out double pulgadas))
+            {
+                MessageBox.Show("Ingrese pulgadas validas", "ERROR");
+                return (false, null);
+            }
+            if (!int.TryParse(this.TxtPulgadasNote.Text, out int resolucion))
+            {
+                MessageBox.Show("Ingrese una resolucion validas", "ERROR");
+                return (false, null);
+            }
+            if (!int.TryParse(this.TxtAlmacenamientoNote.Text, out int almacenamiento))
+            {
+                MessageBox.Show("Ingrese un almacenamiento  valido", "ERROR");
+                return (false, null);
+            }
+            if (!int.TryParse(this.TxtRamNote.Text, out int ram))
+            {
+                MessageBox.Show("Ingrese una cantidad de memoria ram valida", "ERROR");
+                return (false, null);
+            }
+            string sistemaOperativo = TxtSONote.Text;
+            bool SSD = checkSSD.Checked;
+
+            if (sistemaOperativo.Length == 0)
+            {
+                MessageBox.Show("Ingrese un sistema operativo valido", "ERROR");
+                return (false, null);
+            }
+
+
+            Notebook nuevaNotebook = new Notebook(this.id, this.cantidad, this.precio, this.modelo, this.marca, this.tipo,
+                pulgadas, almacenamiento, ram, resolucion, sistemaOperativo, SSD);
+
+            return (true, nuevaNotebook);
+
         }
     }
+
 }

@@ -41,9 +41,7 @@
             TxtMarca = new TextBox();
             TxtModelo = new TextBox();
             TxtPrecio = new TextBox();
-            BtnAceptarCelular = new Button();
-            BtnCancelarCelular = new Button();
-            Celular = new TabControl();
+            TabDispositivos = new TabControl();
             PageCelular = new TabPage();
             label10 = new Label();
             label9 = new Label();
@@ -53,7 +51,8 @@
             TxtRamCelular = new TextBox();
             TxtAlmacenamientoCelular = new TextBox();
             TxtPulgadasCelular = new TextBox();
-            tabPage2 = new TabPage();
+            PageNotebook = new TabPage();
+            label12 = new Label();
             label15 = new Label();
             label14 = new Label();
             label13 = new Label();
@@ -64,17 +63,18 @@
             TxtAlmacenamientoNote = new TextBox();
             TxtResolucionNote = new TextBox();
             TxtPulgadasNote = new TextBox();
-            tabPage3 = new TabPage();
+            PageTelevisor = new TabPage();
+            label17 = new Label();
+            label16 = new Label();
             checkSmartTv = new CheckBox();
             TxtResolucionTele = new TextBox();
             TxtPulgadasTele = new TextBox();
-            label12 = new Label();
-            label16 = new Label();
-            label17 = new Label();
-            Celular.SuspendLayout();
+            BtnAceptar = new Button();
+            BtnCancelar = new Button();
+            TabDispositivos.SuspendLayout();
             PageCelular.SuspendLayout();
-            tabPage2.SuspendLayout();
-            tabPage3.SuspendLayout();
+            PageNotebook.SuspendLayout();
+            PageTelevisor.SuspendLayout();
             SuspendLayout();
             // 
             // LblTitulo
@@ -122,7 +122,6 @@
             label5.Size = new Size(43, 15);
             label5.TabIndex = 6;
             label5.Text = "Marca:";
-            label5.Click += label5_Click;
             // 
             // label6
             // 
@@ -185,36 +184,16 @@
             TxtPrecio.Size = new Size(153, 23);
             TxtPrecio.TabIndex = 17;
             // 
-            // BtnAceptarCelular
+            // TabDispositivos
             // 
-            BtnAceptarCelular.Location = new Point(235, 378);
-            BtnAceptarCelular.Name = "BtnAceptarCelular";
-            BtnAceptarCelular.Size = new Size(269, 28);
-            BtnAceptarCelular.TabIndex = 18;
-            BtnAceptarCelular.Text = "Aceptar";
-            BtnAceptarCelular.UseVisualStyleBackColor = true;
-            BtnAceptarCelular.Click += BtnAceptar_Click;
-            // 
-            // BtnCancelarCelular
-            // 
-            BtnCancelarCelular.Location = new Point(526, 378);
-            BtnCancelarCelular.Name = "BtnCancelarCelular";
-            BtnCancelarCelular.Size = new Size(275, 28);
-            BtnCancelarCelular.TabIndex = 19;
-            BtnCancelarCelular.Text = "Cancelar";
-            BtnCancelarCelular.UseVisualStyleBackColor = true;
-            BtnCancelarCelular.Click += BtnCancelar_Click;
-            // 
-            // Celular
-            // 
-            Celular.Controls.Add(PageCelular);
-            Celular.Controls.Add(tabPage2);
-            Celular.Controls.Add(tabPage3);
-            Celular.Location = new Point(231, 27);
-            Celular.Name = "Celular";
-            Celular.SelectedIndex = 0;
-            Celular.Size = new Size(570, 322);
-            Celular.TabIndex = 20;
+            TabDispositivos.Controls.Add(PageCelular);
+            TabDispositivos.Controls.Add(PageNotebook);
+            TabDispositivos.Controls.Add(PageTelevisor);
+            TabDispositivos.Location = new Point(231, 27);
+            TabDispositivos.Name = "TabDispositivos";
+            TabDispositivos.SelectedIndex = 0;
+            TabDispositivos.Size = new Size(570, 322);
+            TabDispositivos.TabIndex = 20;
             // 
             // PageCelular
             // 
@@ -299,26 +278,35 @@
             TxtPulgadasCelular.Size = new Size(153, 23);
             TxtPulgadasCelular.TabIndex = 21;
             // 
-            // tabPage2
+            // PageNotebook
             // 
-            tabPage2.Controls.Add(label12);
-            tabPage2.Controls.Add(label15);
-            tabPage2.Controls.Add(label14);
-            tabPage2.Controls.Add(label13);
-            tabPage2.Controls.Add(label11);
-            tabPage2.Controls.Add(checkSSD);
-            tabPage2.Controls.Add(TxtSONote);
-            tabPage2.Controls.Add(TxtRamNote);
-            tabPage2.Controls.Add(TxtAlmacenamientoNote);
-            tabPage2.Controls.Add(TxtResolucionNote);
-            tabPage2.Controls.Add(TxtPulgadasNote);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(562, 294);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Notebook";
-            tabPage2.UseVisualStyleBackColor = true;
+            PageNotebook.Controls.Add(label12);
+            PageNotebook.Controls.Add(label15);
+            PageNotebook.Controls.Add(label14);
+            PageNotebook.Controls.Add(label13);
+            PageNotebook.Controls.Add(label11);
+            PageNotebook.Controls.Add(checkSSD);
+            PageNotebook.Controls.Add(TxtSONote);
+            PageNotebook.Controls.Add(TxtRamNote);
+            PageNotebook.Controls.Add(TxtAlmacenamientoNote);
+            PageNotebook.Controls.Add(TxtResolucionNote);
+            PageNotebook.Controls.Add(TxtPulgadasNote);
+            PageNotebook.Location = new Point(4, 24);
+            PageNotebook.Name = "PageNotebook";
+            PageNotebook.Padding = new Padding(3);
+            PageNotebook.Size = new Size(562, 294);
+            PageNotebook.TabIndex = 1;
+            PageNotebook.Text = "Notebook";
+            PageNotebook.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(38, 117);
+            label12.Name = "label12";
+            label12.Size = new Size(68, 15);
+            label12.TabIndex = 32;
+            label12.Text = "Resolucion:";
             // 
             // label15
             // 
@@ -401,20 +389,38 @@
             TxtPulgadasNote.Size = new Size(153, 23);
             TxtPulgadasNote.TabIndex = 21;
             // 
-            // tabPage3
+            // PageTelevisor
             // 
-            tabPage3.Controls.Add(label17);
-            tabPage3.Controls.Add(label16);
-            tabPage3.Controls.Add(checkSmartTv);
-            tabPage3.Controls.Add(TxtResolucionTele);
-            tabPage3.Controls.Add(TxtPulgadasTele);
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(562, 294);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Televisor";
-            tabPage3.UseVisualStyleBackColor = true;
+            PageTelevisor.Controls.Add(label17);
+            PageTelevisor.Controls.Add(label16);
+            PageTelevisor.Controls.Add(checkSmartTv);
+            PageTelevisor.Controls.Add(TxtResolucionTele);
+            PageTelevisor.Controls.Add(TxtPulgadasTele);
+            PageTelevisor.Location = new Point(4, 24);
+            PageTelevisor.Name = "PageTelevisor";
+            PageTelevisor.Padding = new Padding(3);
+            PageTelevisor.Size = new Size(562, 294);
+            PageTelevisor.TabIndex = 2;
+            PageTelevisor.Text = "Televisor";
+            PageTelevisor.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(309, 65);
+            label17.Name = "label17";
+            label17.Size = new Size(68, 15);
+            label17.TabIndex = 25;
+            label17.Text = "Resolucion:";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(53, 65);
+            label16.Name = "label16";
+            label16.Size = new Size(58, 15);
+            label16.TabIndex = 24;
+            label16.Text = "Pulgadas:";
             // 
             // checkSmartTv
             // 
@@ -425,7 +431,6 @@
             checkSmartTv.TabIndex = 23;
             checkSmartTv.Text = "SMART TV";
             checkSmartTv.UseVisualStyleBackColor = true;
-            checkSmartTv.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // TxtResolucionTele
             // 
@@ -441,39 +446,34 @@
             TxtPulgadasTele.Size = new Size(153, 23);
             TxtPulgadasTele.TabIndex = 21;
             // 
-            // label12
+            // BtnAceptar
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(38, 117);
-            label12.Name = "label12";
-            label12.Size = new Size(68, 15);
-            label12.TabIndex = 32;
-            label12.Text = "Resolucion:";
+            BtnAceptar.Location = new Point(235, 370);
+            BtnAceptar.Name = "BtnAceptar";
+            BtnAceptar.Size = new Size(285, 36);
+            BtnAceptar.TabIndex = 21;
+            BtnAceptar.Text = "Aceptar";
+            BtnAceptar.UseVisualStyleBackColor = true;
+            BtnAceptar.Click += BtnAceptar_Click;
             // 
-            // label16
+            // BtnCancelar
             // 
-            label16.AutoSize = true;
-            label16.Location = new Point(53, 65);
-            label16.Name = "label16";
-            label16.Size = new Size(58, 15);
-            label16.TabIndex = 24;
-            label16.Text = "Pulgadas:";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(309, 65);
-            label17.Name = "label17";
-            label17.Size = new Size(68, 15);
-            label17.TabIndex = 25;
-            label17.Text = "Resolucion:";
+            BtnCancelar.Location = new Point(526, 370);
+            BtnCancelar.Name = "BtnCancelar";
+            BtnCancelar.Size = new Size(271, 36);
+            BtnCancelar.TabIndex = 22;
+            BtnCancelar.Text = "Cancelar";
+            BtnCancelar.UseVisualStyleBackColor = true;
+            BtnCancelar.Click += BtnCancelar_Click;
             // 
             // FrmManejoDispositivo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(827, 437);
-            Controls.Add(Celular);
+            ClientSize = new Size(827, 422);
+            Controls.Add(BtnCancelar);
+            Controls.Add(BtnAceptar);
+            Controls.Add(TabDispositivos);
             Controls.Add(TxtPrecio);
             Controls.Add(TxtModelo);
             Controls.Add(TxtMarca);
@@ -481,8 +481,6 @@
             Controls.Add(TxtId);
             Controls.Add(CmbTipo);
             Controls.Add(label7);
-            Controls.Add(BtnCancelarCelular);
-            Controls.Add(BtnAceptarCelular);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -492,13 +490,13 @@
             Name = "FrmManejoDispositivo";
             Text = "FrmProducto";
             Load += FrmManejoDispositivo_Load;
-            Celular.ResumeLayout(false);
+            TabDispositivos.ResumeLayout(false);
             PageCelular.ResumeLayout(false);
             PageCelular.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
+            PageNotebook.ResumeLayout(false);
+            PageNotebook.PerformLayout();
+            PageTelevisor.ResumeLayout(false);
+            PageTelevisor.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -517,12 +515,10 @@
         private TextBox TxtMarca;
         private TextBox TxtModelo;
         private TextBox TxtPrecio;
-        private Button BtnAceptarCelular;
-        private Button BtnCancelarCelular;
-        private TabControl Celular;
+        private TabControl TabDispositivos;
         private TabPage PageCelular;
-        private TabPage tabPage2;
-        private TabPage tabPage3;
+        private TabPage PageNotebook;
+        private TabPage PageTelevisor;
         private TextBox TxtCantCamarasCelular;
         private TextBox TxtRamCelular;
         private TextBox TxtAlmacenamientoCelular;
@@ -547,5 +543,7 @@
         private Label label12;
         private Label label17;
         private Label label16;
+        private Button BtnAceptar;
+        private Button BtnCancelar;
     }
 }

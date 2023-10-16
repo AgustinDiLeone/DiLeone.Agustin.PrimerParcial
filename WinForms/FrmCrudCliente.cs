@@ -119,7 +119,7 @@ namespace WinForms
                     serializer.Serialize(writer, listaClientes);
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Error de serialización del archivo, llamar al equipo tecnico","ERROR");
             }
