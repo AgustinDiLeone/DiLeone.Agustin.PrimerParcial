@@ -22,8 +22,8 @@ namespace WinForms
             this.CenterToScreen();
             this.cliente = cliente;
 
-            Celular celular = new Celular(10, 251, 5478, "Samsung", "A23", EFactura.B, 20, 264, 8, 3);
-            this.cliente += celular;
+            //Celular celular = new Celular(10, 251, 5478, "Samsung", "A23", EFactura.B, 20, 264, 8, 3);
+            //this.cliente += celular;
         }
         public FrmCrudDispositivos(Cliente cliente, Usuario usuario) : this(cliente)
         {

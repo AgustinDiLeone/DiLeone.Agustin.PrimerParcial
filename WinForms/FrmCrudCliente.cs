@@ -107,29 +107,7 @@ namespace WinForms
         {
             throw new NotImplementedException();
         }
-        /*
-        private void SerializaciónXml()
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            path += @"\ListaDeClientes.xml";
-            //string path = @"..\..\..\..\WinForms\ListaDeClientes.xml";
-            try
-            {
 
-                using (XmlTextWriter writer = new XmlTextWriter(path, Encoding.UTF8))
-                {
-                    XmlSerializer ser = new XmlSerializer((typeof(List<Cliente>)));
-                    ser.Serialize(writer, this.clientes);
-                }
-
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Error al Serializar los Datos");
-            }
-
-        }
-        */
         public void SerializaciónXml(List<Cliente> listaClientes, string nombreArchivo)
         {
             try
@@ -168,8 +146,10 @@ namespace WinForms
 
         private void FrmCrudCliente_Load(object sender, EventArgs e)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            path += @"\ListaDeClientes.xml";
+            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //path += @"\ListaDeClientes.xml";
+            string path = @"..\..\..\..\WinForms\ListaDeClientes.xml";
+
             this.clientes = this.DeserializacionXml(path);
             if (this.clientes == null)
                 this.clientes = new List<Cliente>();
@@ -192,8 +172,9 @@ namespace WinForms
 
         private void FrmCrudCliente_FormClosed(object sender, FormClosedEventArgs e)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            path += @"\ListaDeClientes.xml";
+            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //path += @"\ListaDeClientes.xml";
+            string path = @"..\..\..\..\WinForms\ListaDeClientes.xml";
             this.SerializaciónXml(this.clientes, path);
         }
 

@@ -154,7 +154,7 @@ namespace Entidades
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"-----------------------------------------");
-            sb.AppendLine(this.ToString());
+            sb.Append(this.ToString());
             sb.AppendLine($"-----------------------------------------");
 
             if (this.dispositivos != null)

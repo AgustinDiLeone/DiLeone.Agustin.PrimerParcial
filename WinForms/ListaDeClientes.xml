@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCliente xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Cliente>
+    <Cuit>1486245</Cuit>
+    <Nombre>juanito</Nombre>
+    <TipoCliente>Monotributista</TipoCliente>
+    <Ubicacion>Buenos Aires</Ubicacion>
+    <Dispositivos>
+      <DispositivoElectronico xsi:type="Celular">
+        <Id>10</Id>
+        <Cantidad>2000</Cantidad>
+        <Marca>Samsung</Marca>
+        <Modelo>A23</Modelo>
+        <PrecioUnitario>542.4</PrecioUnitario>
+        <TipoFactura>B</TipoFactura>
+        <Pulgadas>20</Pulgadas>
+        <Almacenamiento>264</Almacenamiento>
+        <Ram>18</Ram>
+        <CantCamaras>3</CantCamaras>
+      </DispositivoElectronico>
+      <DispositivoElectronico xsi:type="Celular">
+        <Id>25</Id>
+        <Cantidad>254</Cantidad>
+        <Marca>dfg</Marca>
+        <Modelo>df</Modelo>
+        <PrecioUnitario>24</PrecioUnitario>
+        <TipoFactura>B</TipoFactura>
+        <Pulgadas>25</Pulgadas>
+        <Almacenamiento>57</Almacenamiento>
+        <Ram>0</Ram>
+        <CantCamaras>3</CantCamaras>
+      </DispositivoElectronico>
+    </Dispositivos>
+  </Cliente>
+  <Cliente>
+    <Cuit>20169131679</Cuit>
+    <Nombre>Diego Di Leone</Nombre>
+    <TipoCliente>ConsumidorFinal</TipoCliente>
+    <Ubicacion>Gerli, Buenos Aires</Ubicacion>
+    <Dispositivos>
+      <DispositivoElectronico xsi:type="Celular">
+        <Id>10</Id>
+        <Cantidad>251</Cantidad>
+        <Marca>Samsung</Marca>
+        <Modelo>A23</Modelo>
+        <PrecioUnitario>5478</PrecioUnitario>
+        <TipoFactura>B</TipoFactura>
+        <Pulgadas>20</Pulgadas>
+        <Almacenamiento>264</Almacenamiento>
+        <Ram>8</Ram>
+        <CantCamaras>3</CantCamaras>
+      </DispositivoElectronico>
+    </Dispositivos>
+  </Cliente>
+  <Cliente>
+    <Cuit>20456799486</Cuit>
+    <Nombre>Agustin Di Leone</Nombre>
+    <TipoCliente>Exento</TipoCliente>
+    <Ubicacion>Lanus, Buenos Aires</Ubicacion>
+    <Dispositivos />
+  </Cliente>
+</ArrayOfCliente>
