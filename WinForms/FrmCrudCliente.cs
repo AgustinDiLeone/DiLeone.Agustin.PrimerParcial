@@ -49,7 +49,7 @@ namespace WinForms
                 return;
             }
             Cliente cliente = this.clientes[index];
-            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(base.usuarioIngresado, cliente, this.datosUsuarioIngresado, this.usuarios);
+            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(base.usuarioIngresado, cliente);
 
             this.Hide();
             frmVer.ShowDialog();
@@ -174,6 +174,7 @@ namespace WinForms
             if (this.clientes == null)
                 this.clientes = new List<Cliente>();
             this.usuarios.Add(base.datosUsuarioIngresado);
+            this.SerializacionLog(this.datosUsuarioIngresado, @"..\..\..\..\WinForms\Usuarios.log");
             this.ActualizarVisor();
 
         }
@@ -184,7 +185,6 @@ namespace WinForms
             //path += @"\ListaDeClientes.xml";
             string path = @"..\..\..\..\WinForms\ListaDeClientes.xml";
             this.SerializaciónXml(this.clientes, path);
-            this.SerializacionLog(this.datosUsuarioIngresado, @"..\..\..\..\WinForms\Usuarios.log");
         }
 
 
@@ -213,7 +213,7 @@ namespace WinForms
             }
             catch
             {
-                //MessageBox.Show("Error en la serealizacion del archivo, llamar al equipo tecnico", "ERROR");
+                MessageBox.Show("Error en la serealizacion del archivo, llamar al equipo tecnico", "ERROR");
                 return;
             }
 

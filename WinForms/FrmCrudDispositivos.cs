@@ -15,16 +15,13 @@ namespace WinForms
     public partial class FrmCrudDispositivos : FrmCrud
     {
         protected Cliente cliente;
-        public FrmCrudDispositivos(Usuario usuario,Cliente cliente, string datosUsuarioIngresado, List<string> usuarios):base(usuario)
+        public FrmCrudDispositivos(Usuario usuario,Cliente cliente):base(usuario)
         {
             InitializeComponent();
             this.CenterToScreen();
             this.cliente = cliente;
             BtnCaracteristicaUno.Text = "ID";
             BtnCaracteristicaDos.Text = "MARCA";
-            this.datosUsuarioIngresado = datosUsuarioIngresado;
-            LblUsuarioConectado.Text = this.datosUsuarioIngresado;
-            this.usuarios = usuarios;
         }
 
         private void ActualizarForm()

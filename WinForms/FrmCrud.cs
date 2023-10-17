@@ -82,7 +82,7 @@ namespace WinForms
             }
             catch
             {
-                //MessageBox.Show("Error en la deserealizacion del archivo, llamar al equipo tecnico", "ERROR");
+                MessageBox.Show("Error en la deserealizacion del archivo, llamar al equipo tecnico", "ERROR");
                 return usuarios;
             }
 
