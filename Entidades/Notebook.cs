@@ -62,7 +62,7 @@ namespace Entidades
         }
         public Notebook(int id, int cantidad, double precio, string modelo, string marca,
             EFactura tipoFactura, double pulgadas, int almacenamiento,
-            int resolucion) : base(id, cantidad, precio, modelo, marca, tipoFactura)
+            int resolucion) : base(id, cantidad, precio, marca, modelo, tipoFactura)
         {
             this.pulgadas = pulgadas;
             this.almacenamiento = almacenamiento;

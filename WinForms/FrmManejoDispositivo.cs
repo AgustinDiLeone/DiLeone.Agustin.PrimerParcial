@@ -176,7 +176,7 @@ namespace WinForms
                 MessageBox.Show("Ingrese pulgadas validas", "ERROR");
                 return (false, null);
             }
-            if (!int.TryParse(this.TxtPulgadasNote.Text, out int resolucion))
+            if (!int.TryParse(this.TxtResolucionNote.Text, out int resolucion))
             {
                 MessageBox.Show("Ingrese una resolucion validas", "ERROR");
                 return (false, null);
@@ -201,7 +201,7 @@ namespace WinForms
             }
 
 
-            Notebook nuevaNotebook = new Notebook(this.id, this.cantidad, this.precio, this.modelo, this.marca, this.tipo,
+            Notebook nuevaNotebook = new Notebook(this.id, this.cantidad, this.precio, this.marca, this.modelo, this.tipo,
                 pulgadas, almacenamiento, ram, resolucion, sistemaOperativo, SSD);
 
             return (true, nuevaNotebook);

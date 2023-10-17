@@ -37,7 +37,7 @@ namespace Entidades
             this.marca = marca;
             this.modelo = modelo;
         }
-        public DispositivoElectronico(int id, int cantidad, double precio, string modelo, string marca, EFactura tipoFactura) : this(id,cantidad, precio, modelo, marca)
+        public DispositivoElectronico(int id, int cantidad, double precio,string modelo, string marca, EFactura tipoFactura) : this(id,cantidad, precio, marca, modelo)
         {
             this.tipoFactura = tipoFactura;
         }
