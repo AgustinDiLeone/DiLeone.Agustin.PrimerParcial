@@ -22,4 +22,5 @@ ascendente o descendente, segun se elija.
 ### Resguardo de datos:
 La lista de clientes, los cuales incluyen sos dispositivos adqueridos, estan almacenados en una archivo .xml el cual funciona como base de datos. Este se deserializa cuando se inicia
 cuando se ingresa correctamente el usuario y se serializa cuando se cierra la aplicacion.
+## Diagrama de clase
 ![ClassDiagram](https://github.com/AgustinDiLeone/DiLeone.Agustin.PrimerParcial/assets/123491937/94f88e1c-271f-4e7c-aded-86a648c4cddf)
