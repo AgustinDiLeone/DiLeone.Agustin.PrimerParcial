@@ -19,3 +19,6 @@ en el visor por medio de su nombre o cuit, ya sea de forma ascendente o descendi
 Cuando seleccionas la opcion Ver de algun cliente, podes visualizar otro CRUD de los dispositivos adqueridos por dicho cliente. Estos dispositivos pueden ser del tipo celular, notebook
 y/o televisor. A tener un CRUD, tambien se pueden ver, agregar, modificar o eliminar dichos aparatos. Tambien cuenta con la posibilida de ordenarlos usando ID o la MARCA, de manera 
 ascendente o descendente, segun se elija.
+### Resguardo de datos:
+La lista de clientes, los cuales incluyen sos dispositivos adqueridos, estan almacenados en una archivo .xml el cual funciona como base de datos. Este se deserializa cuando se inicia
+cuando se ingresa correctamente el usuario y se serializa cuando se cierra la aplicacion.
