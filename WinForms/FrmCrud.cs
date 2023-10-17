@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,16 @@ namespace WinForms
 {
     public partial class FrmCrud : Form
     {
-        public FrmCrud()
+        public List<string> usuarios;
+        public Usuario usuarioIngresado;
+        public string datosUsuarioIngresado;
+        public FrmCrud(Usuario usuario)
         {
             InitializeComponent();
             BtnCaracteristicaUno.Checked = true;
             BtnAscendente.Checked = true;
+            this.usuarioIngresado = usuario;
+            this.datosUsuarioIngresado = this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
         }
 
         public virtual void BtnVer_Click(object sender, EventArgs e) { }
@@ -41,12 +47,69 @@ namespace WinForms
 
         public virtual void FrmCrud_Load(object sender, EventArgs e)
         {
+            LblUsuarioConectado.Text = this.datosUsuarioIngresado;
+            this.usuarios = this.DeserializacionLog(@"..\..\..\..\WinForms\Usuarios.log");
+            this.usuarios.Add(this.datosUsuarioIngresado);
 
         }
 
         private void BtnCaracteristicaUno_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnUsuarios_Click(object sender, EventArgs e)
+        {
+            FrmVer frmVer = new FrmVer(this.usuarios);
+            frmVer.ShowDialog();
+        }
+        public List<string> DeserializacionLog(string logFilePath)
+        {
+            List<string> usuarios = new();
+            try
+            {
+                string[] usuariosLogueados = File.ReadAllLines(logFilePath);
+
+
+                // Recorrer y procesar los mensajes de registro
+                foreach (string user in usuariosLogueados)
+                {
+                    usuarios.Add(user);
+                }
+                return usuarios;
+            }
+            catch
+            {
+                MessageBox.Show("Error en la deserealizacion del archivo, llamar al equipo tecnico", "ERROR");
+                return usuarios;
+            }
+
+        }
+        public void SerializacionLog(string datosUsuarioIngresado, string logFilePath)
+        {
+            try
+            {
+                File.AppendAllText(logFilePath, datosUsuarioIngresado + Environment.NewLine);
+
+            }
+            catch
+            {
+                MessageBox.Show("Error en la serealizacion del archivo, llamar al equipo tecnico", "ERROR");
+                return;
+            }
+
+        }
+        private void FrmCrudCliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Estas seguro de cerrar la aplicacion", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true; // Evita el cierre del formulario
+            }
+        }
+        private void FrmCrud_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.SerializacionLog(this.datosUsuarioIngresado, @"..\..\..\..\WinForms\Usuarios.log");
         }
     }
 }

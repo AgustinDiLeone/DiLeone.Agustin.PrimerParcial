@@ -38,7 +38,6 @@
             ClientSize = new Size(800, 450);
             Name = "FrmCrudCliente";
             Text = "FrmCrudCliente";
-            FormClosing += FrmCrudCliente_FormClosing;
             FormClosed += FrmCrudCliente_FormClosed;
             Load += FrmCrudCliente_Load;
             grpOrden.ResumeLayout(false);

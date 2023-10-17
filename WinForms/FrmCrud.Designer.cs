@@ -41,6 +41,7 @@
             BtnEliminar = new Button();
             BtnAgregar = new Button();
             LblUsuarioConectado = new Label();
+            BtnUsuarios = new Button();
             grpOrdenCarac.SuspendLayout();
             grpOrden.SuspendLayout();
             SuspendLayout();
@@ -184,11 +185,25 @@
             LblUsuarioConectado.Text = "UsuarioConectado";
             LblUsuarioConectado.Click += LblUsuarioConectado_Click;
             // 
+            // BtnUsuarios
+            // 
+            BtnUsuarios.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnUsuarios.ImageAlign = ContentAlignment.TopCenter;
+            BtnUsuarios.Location = new Point(659, 29);
+            BtnUsuarios.Margin = new Padding(1);
+            BtnUsuarios.Name = "BtnUsuarios";
+            BtnUsuarios.Size = new Size(96, 19);
+            BtnUsuarios.TabIndex = 10;
+            BtnUsuarios.Text = "Usuarios";
+            BtnUsuarios.UseVisualStyleBackColor = true;
+            BtnUsuarios.Click += BtnUsuarios_Click;
+            // 
             // FrmCrud
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(BtnUsuarios);
             Controls.Add(LblUsuarioConectado);
             Controls.Add(BtnAgregar);
             Controls.Add(BtnEliminar);
@@ -200,6 +215,8 @@
             Controls.Add(lstBox);
             Name = "FrmCrud";
             Text = "FrmCrud";
+            FormClosing += FrmCrudCliente_FormClosing;
+            FormClosed += FrmCrud_FormClosed;
             Load += FrmCrud_Load;
             grpOrdenCarac.ResumeLayout(false);
             grpOrdenCarac.PerformLayout();
@@ -224,5 +241,6 @@
         public RadioButton BtnAscendente;
         public RadioButton BtnCaracteristicaDos;
         public RadioButton BtnCaracteristicaUno;
+        private Button BtnUsuarios;
     }
 }

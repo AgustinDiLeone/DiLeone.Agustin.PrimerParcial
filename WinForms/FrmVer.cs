@@ -14,11 +14,21 @@ namespace WinForms
     public partial class FrmVer : Form
     {
         private DispositivoElectronico dispositivo;
-        public FrmVer(DispositivoElectronico dispositivo)
+        private List<string> usuarios;
+        public FrmVer()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+
+        }
+        public FrmVer(DispositivoElectronico dispositivo):this()
+        {
             this.dispositivo = dispositivo;
+        }
+        public FrmVer(List<string> usuarios) : this()
+        {
+            this.usuarios = usuarios;
         }
 
         private void BtnVolver_Click(object sender, EventArgs e)
@@ -30,7 +40,16 @@ namespace WinForms
         {
             TxtDispositivo.SelectionStart = 0;
             TxtDispositivo.SelectionLength = 0;
-            TxtDispositivo.Text = this.dispositivo.ToString();
+            if (this.usuarios != null)
+            {
+                foreach (string user in this.usuarios)
+                {
+                    TxtDispositivo.Text += (user + Environment.NewLine);
+                }
+
+            }
+            else 
+                TxtDispositivo.Text = this.dispositivo.ToString();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

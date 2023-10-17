@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archivos", "Archivos", "{1C
 	ProjectSection(SolutionItems) = preProject
 		WinForms\ListaDeClientes.xml = WinForms\ListaDeClientes.xml
 		WinForms\MOCK_DATA.json = WinForms\MOCK_DATA.json
+		WinForms\Usuarios.log = WinForms\Usuarios.log
 	EndProjectSection
 EndProject
 Global

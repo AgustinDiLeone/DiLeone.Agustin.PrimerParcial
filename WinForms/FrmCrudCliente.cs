@@ -17,19 +17,17 @@ namespace WinForms
     public partial class FrmCrudCliente : FrmCrud
     {
         private List<Cliente> clientes;
-        private Usuario usuarioIngresado;
-        public FrmCrudCliente()
+        private Usuario usuario;
+
+
+        public FrmCrudCliente(Usuario usuario): base(usuario)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             BtnCaracteristicaUno.Text = "NOMBRE";
             BtnCaracteristicaDos.Text = "CUIT";
-            
         }
-        public FrmCrudCliente(Usuario usuario) : this()
-        {
-            this.usuarioIngresado = usuario;
-        }
+
         private void ActualizarVisor()
         {
             lstBox.Items.Clear();
@@ -51,7 +49,7 @@ namespace WinForms
                 return;
             }
             Cliente cliente = this.clientes[index];
-            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(cliente,this.usuarioIngresado);
+            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(base.usuarioIngresado,cliente);
 
             this.Hide();
             frmVer.ShowDialog();
@@ -166,18 +164,17 @@ namespace WinForms
             }
 
         }
-
+        
         private void FrmCrudCliente_Load(object sender, EventArgs e)
         {
             //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             //path += @"\ListaDeClientes.xml";
             string path = @"..\..\..\..\WinForms\ListaDeClientes.xml";
-
             this.clientes = this.DeserializacionXml(path);
             if (this.clientes == null)
                 this.clientes = new List<Cliente>();
-            LblUsuarioConectado.Text = this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
             this.ActualizarVisor();
+
         }
 
         private void FrmCrudCliente_FormClosed(object sender, FormClosedEventArgs e)
@@ -186,17 +183,11 @@ namespace WinForms
             //path += @"\ListaDeClientes.xml";
             string path = @"..\..\..\..\WinForms\ListaDeClientes.xml";
             this.SerializaciónXml(this.clientes, path);
+            //this.SerializacionLog(this.datosUsuarioIngresado,@"..\..\..\..\WinForms\Usuarios.log");
         }
 
 
-        private void FrmCrudCliente_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Estas seguro de cerrar la aplicacion", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.No)
-            {
-                e.Cancel = true; // Evita el cierre del formulario
-            }
-        }
+
         public void OrdenarClienteNombre(string orden)
         {
             if (orden == "ascendente")

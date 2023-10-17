@@ -15,8 +15,7 @@ namespace WinForms
     public partial class FrmCrudDispositivos : FrmCrud
     {
         protected Cliente cliente;
-        private Usuario usuarioIngresado;
-        public FrmCrudDispositivos(Cliente cliente)
+        public FrmCrudDispositivos(Usuario usuario,Cliente cliente):base(usuario)
         {
             InitializeComponent();
             this.CenterToScreen();
@@ -24,10 +23,6 @@ namespace WinForms
             BtnCaracteristicaUno.Text = "ID";
             BtnCaracteristicaDos.Text = "MARCA";
 
-        }
-        public FrmCrudDispositivos(Cliente cliente, Usuario usuario) : this(cliente)
-        {
-            this.usuarioIngresado = usuario;
         }
 
         private void ActualizarForm()
@@ -47,7 +42,6 @@ namespace WinForms
         private void FrmVer_Load(object sender, EventArgs e)
         {
             lblCliente.Text = this.cliente.ToString();
-            LblUsuarioConectado.Text = this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
             this.ActualizarForm();
         }
 

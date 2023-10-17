@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCliente xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Cliente>
+    <Cuit>245285214521</Cuit>
+    <Nombre>Juan Carlos</Nombre>
+    <TipoCliente>Monotributista</TipoCliente>
+    <Ubicacion>jfbrihebfil</Ubicacion>
+    <Dispositivos />
+  </Cliente>
+  <Cliente>
     <Cuit>20456799486</Cuit>
     <Nombre>Agustin Di Leone</Nombre>
     <TipoCliente>Exento</TipoCliente>
@@ -27,21 +34,9 @@
       </DispositivoElectronico>
       <DispositivoElectronico xsi:type="Celular">
         <Id>10</Id>
-        <Cantidad>251</Cantidad>
-        <Marca>Samsung</Marca>
-        <Modelo>A23</Modelo>
-        <PrecioUnitario>5478</PrecioUnitario>
-        <TipoFactura>B</TipoFactura>
-        <Pulgadas>20</Pulgadas>
-        <Almacenamiento>264</Almacenamiento>
-        <Ram>8</Ram>
-        <CantCamaras>3</CantCamaras>
-      </DispositivoElectronico>
-      <DispositivoElectronico xsi:type="Celular">
-        <Id>10</Id>
         <Cantidad>65</Cantidad>
-        <Marca>ljg</Marca>
-        <Modelo>kjvh</Modelo>
+        <Marca>kjvh</Marca>
+        <Modelo>ljg</Modelo>
         <PrecioUnitario>654</PrecioUnitario>
         <TipoFactura>A</TipoFactura>
         <Pulgadas>5</Pulgadas>
@@ -51,15 +46,15 @@
       </DispositivoElectronico>
       <DispositivoElectronico xsi:type="Celular">
         <Id>10</Id>
-        <Cantidad>54</Cantidad>
-        <Marca> ljg</Marca>
-        <Modelo>ljg</Modelo>
-        <PrecioUnitario>51</PrecioUnitario>
-        <TipoFactura>A</TipoFactura>
-        <Pulgadas>51</Pulgadas>
-        <Almacenamiento>51</Almacenamiento>
-        <Ram>21</Ram>
-        <CantCamaras>51</CantCamaras>
+        <Cantidad>251</Cantidad>
+        <Marca>Samsung</Marca>
+        <Modelo>A23</Modelo>
+        <PrecioUnitario>5478</PrecioUnitario>
+        <TipoFactura>B</TipoFactura>
+        <Pulgadas>20</Pulgadas>
+        <Almacenamiento>264</Almacenamiento>
+        <Ram>8</Ram>
+        <CantCamaras>3</CantCamaras>
       </DispositivoElectronico>
     </Dispositivos>
   </Cliente>

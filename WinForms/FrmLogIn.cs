@@ -40,6 +40,7 @@ namespace WinForms
                         {
                             this.validacionClaveUsuario = true;
                             this.usuarioIngresado = usuario;
+
                             this.Close();
                             return;
                         }
