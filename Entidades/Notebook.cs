@@ -86,7 +86,7 @@ namespace Entidades
         }
         public override string MostrarVisor()
         {
-            return ($"{base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} -" +
+            return ($"{base.id} - {base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} -" +
                 $" {this.pulgadas}In - {this.resolucion}px - {this.sistemaOperativo}");
         }
         public override string ToString()

@@ -39,7 +39,12 @@ namespace WinForms
 
         }
 
-        private void FrmCrud_Load(object sender, EventArgs e)
+        public virtual void FrmCrud_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnCaracteristicaUno_CheckedChanged(object sender, EventArgs e)
         {
 
         }

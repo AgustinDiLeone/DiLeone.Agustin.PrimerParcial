@@ -30,7 +30,6 @@
         {
             BtnVolver = new Button();
             lblCliente = new Label();
-            grpOrden.SuspendLayout();
             SuspendLayout();
             // 
             // lstBox
@@ -85,8 +84,6 @@
             Controls.SetChildIndex(BtnAgregar, 0);
             Controls.SetChildIndex(LblUsuarioConectado, 0);
             Controls.SetChildIndex(lblCliente, 0);
-            grpOrden.ResumeLayout(false);
-            grpOrden.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

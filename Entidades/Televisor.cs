@@ -45,10 +45,9 @@ namespace Entidades
             this.resolucion = resolucion;
         }
         public Televisor(int id, int cantidad, double precio, string modelo, string marca,
-            EFactura tipoFactura, double pulgadas, int resolucion) : base(id, cantidad, precio, modelo, marca, tipoFactura)
+            EFactura tipoFactura, double pulgadas, int resolucion) : this(id, cantidad, precio, modelo, marca, tipoFactura,resolucion,pulgadas)
         {
-            this.pulgadas = pulgadas;
-            this.resolucion = resolucion;
+
         }
         public Televisor(int id, int cantidad, double precio, string modelo, string marca,
             EFactura tipoFactura, double pulgadas, int resolucion,
@@ -58,7 +57,7 @@ namespace Entidades
         }
         public override string MostrarVisor()
         {
-            string visor = ($"{base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} - {this.pulgadas}In - {this.resolucion}px ");
+            string visor = ($"{base.id} - {base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} - {this.pulgadas}In - {this.resolucion}px ");
             if (this.smartTv)
             {
                 visor += "- SMART TV: SI";

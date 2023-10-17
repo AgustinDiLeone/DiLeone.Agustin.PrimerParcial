@@ -80,6 +80,7 @@
             // 
             // BtnCaracteristicaUno
             // 
+            BtnCaracteristicaUno.AccessibleName = "BtnCaracteristicaUno";
             BtnCaracteristicaUno.AutoSize = true;
             BtnCaracteristicaUno.Location = new Point(18, 22);
             BtnCaracteristicaUno.Name = "BtnCaracteristicaUno";
@@ -88,6 +89,7 @@
             BtnCaracteristicaUno.TabStop = true;
             BtnCaracteristicaUno.Text = "Ascendente";
             BtnCaracteristicaUno.UseVisualStyleBackColor = true;
+            BtnCaracteristicaUno.CheckedChanged += BtnCaracteristicaUno_CheckedChanged;
             // 
             // grpOrden
             // 
@@ -218,9 +220,9 @@
         public Button BtnEliminar;
         public Button BtnAgregar;
         public Label LblUsuarioConectado;
-        private RadioButton BtnDescendente;
-        private RadioButton BtnAscendente;
-        private RadioButton BtnCaracteristicaDos;
-        private RadioButton BtnCaracteristicaUno;
+        public RadioButton BtnDescendente;
+        public RadioButton BtnAscendente;
+        public RadioButton BtnCaracteristicaDos;
+        public RadioButton BtnCaracteristicaUno;
     }
 }

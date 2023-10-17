@@ -22,10 +22,11 @@ namespace WinForms
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            //this.clientes = new List<Cliente>();
-
+            BtnCaracteristicaUno.Text = "NOMBRE";
+            BtnCaracteristicaDos.Text = "CUIT";
+            
         }
-        public FrmCrudCliente(Usuario usuario):this() 
+        public FrmCrudCliente(Usuario usuario) : this()
         {
             this.usuarioIngresado = usuario;
         }
@@ -50,7 +51,7 @@ namespace WinForms
                 return;
             }
             Cliente cliente = this.clientes[index];
-            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(cliente);
+            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(cliente,this.usuarioIngresado);
 
             this.Hide();
             frmVer.ShowDialog();
@@ -105,13 +106,35 @@ namespace WinForms
         }
         public override void BtnOrdenar_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (BtnCaracteristicaUno.Checked)
+            {
+                if (BtnAscendente.Checked)
+                {
+                    this.OrdenarClienteNombre("ascendente");
+                }
+                else
+                {
+                    this.OrdenarClienteNombre("desendiente");
+                }
+            }
+            else
+            {
+                if (BtnAscendente.Checked)
+                {
+                    this.OrdenarClienteCuit("ascendente");
+                }
+                else
+                {
+                    this.OrdenarClienteCuit("desendiente");
+                }
+            }
+            this.ActualizarVisor();
         }
 
         public void SerializaciónXml(List<Cliente> listaClientes, string nombreArchivo)
         {
             try
-            { 
+            {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Cliente>));
 
                 using (TextWriter writer = new StreamWriter(nombreArchivo))
@@ -121,7 +144,7 @@ namespace WinForms
             }
             catch
             {
-                MessageBox.Show("Error de serialización del archivo, llamar al equipo tecnico","ERROR");
+                MessageBox.Show("Error de serialización del archivo, llamar al equipo tecnico", "ERROR");
             }
         }
 
@@ -136,7 +159,7 @@ namespace WinForms
                     return (List<Cliente>)serializer.Deserialize(reader);
                 }
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Error en la deserealizacion del archivo, llamar al equipo tecnico", "ERROR");
                 return this.clientes = new List<Cliente>();
@@ -153,20 +176,7 @@ namespace WinForms
             this.clientes = this.DeserializacionXml(path);
             if (this.clientes == null)
                 this.clientes = new List<Cliente>();
-            //LblUsuarioConectado.Text = this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
-            /*
-            Cliente x = new Cliente(1486245, "juanito", ETipos.Monotributista, "Buenos Aires");
-            DispositivoElectronico y = new Celular();
-            DispositivoElectronico t = new Celular(25,254,24,"dfg","df",EFactura.B,25,57,3);
-
-            DispositivoElectronico z = new Celular(10, 2000, 542.4, "Samsung", "A23", EFactura.B, 20, 264, 18, 3);
-            x += y;
-            x += z;
-            x+= t;
-            this.clientes.Add(x);
-            
-            */
-            //MessageBox.Show(this.clientes.ToString());
+            LblUsuarioConectado.Text = this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
             this.ActualizarVisor();
         }
 
@@ -181,11 +191,26 @@ namespace WinForms
 
         private void FrmCrudCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Estas seguro de cerrar la aplicacion", "ATENCION",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Estas seguro de cerrar la aplicacion", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
             {
                 e.Cancel = true; // Evita el cierre del formulario
             }
+        }
+        public void OrdenarClienteNombre(string orden)
+        {
+            if (orden == "ascendente")
+                this.clientes.Sort((cliente1, cliente2) => cliente1.Nombre.CompareTo(cliente2.Nombre));
+            else
+                this.clientes.Sort((cliente1, cliente2) => cliente2.Nombre.CompareTo(cliente1.Nombre));
+        }
+
+        public void OrdenarClienteCuit(string orden)
+        {
+            if (orden == "ascendente")
+                this.clientes.Sort((cliente1, cliente2) => cliente1.Cuit.CompareTo(cliente2.Cuit));
+            else
+                this.clientes.Sort((cliente1, cliente2) => cliente2.Cuit.CompareTo(cliente1.Cuit));
         }
     }
 }

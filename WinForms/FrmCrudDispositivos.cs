@@ -15,19 +15,19 @@ namespace WinForms
     public partial class FrmCrudDispositivos : FrmCrud
     {
         protected Cliente cliente;
-        //private Usuario usuarioIngresado;
+        private Usuario usuarioIngresado;
         public FrmCrudDispositivos(Cliente cliente)
         {
             InitializeComponent();
             this.CenterToScreen();
             this.cliente = cliente;
+            BtnCaracteristicaUno.Text = "ID";
+            BtnCaracteristicaDos.Text = "MARCA";
 
-            //Celular celular = new Celular(10, 251, 5478, "Samsung", "A23", EFactura.B, 20, 264, 8, 3);
-            //this.cliente += celular;
         }
         public FrmCrudDispositivos(Cliente cliente, Usuario usuario) : this(cliente)
         {
-            //this.usuarioIngresado = usuario;
+            this.usuarioIngresado = usuario;
         }
 
         private void ActualizarForm()
@@ -47,7 +47,7 @@ namespace WinForms
         private void FrmVer_Load(object sender, EventArgs e)
         {
             lblCliente.Text = this.cliente.ToString();
-            //LblUsuarioConectado.Text = this.usuarioIngresado..nombre + " - " + DateTime.Now.ToString();
+            LblUsuarioConectado.Text = this.usuarioIngresado.nombre + " - " + DateTime.Now.ToString();
             this.ActualizarForm();
         }
 
@@ -121,5 +121,34 @@ namespace WinForms
             FrmVer frmVer = new FrmVer(this.cliente.Dispositivos[index]);
             frmVer.ShowDialog();
         }
+        public override void BtnOrdenar_Click(object sender, EventArgs e)
+        {
+            if (BtnCaracteristicaUno.Checked)
+            {
+                if(BtnAscendente.Checked)
+                {
+                    this.cliente.OrdenarDispositivosId("ascendente");
+                }
+                else
+                {
+                    this.cliente.OrdenarDispositivosId("desendiente");
+                }
+            }
+            else
+            {
+                if (BtnAscendente.Checked)
+                {
+                    this.cliente.OrdenarDispositivosMarca("ascendente");
+                }
+                else
+                {
+                    this.cliente.OrdenarDispositivosMarca("desendiente");
+                }
+            }
+
+
+            this.ActualizarForm();
+        }
+
     }
 }

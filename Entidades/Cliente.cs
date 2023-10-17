@@ -164,5 +164,21 @@ namespace Entidades
             }
             return sb.ToString();
         }
+        public void OrdenarDispositivosId(string orden)
+        {
+            if (orden == "ascendente")
+                this.dispositivos.Sort((dispositivo1, dispositivo2) => dispositivo1.Id.CompareTo(dispositivo2.Id)); 
+            else
+                this.dispositivos.Sort((dispositivo1, dispositivo2) => dispositivo2.Id.CompareTo(dispositivo1.Id));
+        }
+        public void OrdenarDispositivosMarca(string orden)
+        {
+            if (orden == "ascendente")
+                this.dispositivos.Sort((dispositivo1, dispositivo2) => dispositivo1.Marca.CompareTo(dispositivo2.Marca));
+            else
+                this.dispositivos.Sort((dispositivo1, dispositivo2) => dispositivo2.Marca.CompareTo(dispositivo1.Marca));
+        }
+
+
     }
 }

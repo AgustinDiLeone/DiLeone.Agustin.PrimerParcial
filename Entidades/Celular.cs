@@ -48,14 +48,19 @@ namespace Entidades
             this.cantCamaras = 0;
 
         }
-        public Celular(int id, int cantidad, double precio) : base(id, cantidad, precio){}
         public Celular(int id, int cantidad, double precio, string modelo, string marca,
-            EFactura tipoFactura, double pulgadas, int almacenamiento, int cantCamaras) : base(id,
-                cantidad, precio, modelo, marca, tipoFactura) 
+            EFactura tipoFactura, int cantCamaras,  int almacenamiento, double pulgadas) : base(id,
+                cantidad, precio, modelo, marca, tipoFactura)
         {
             this.pulgadas = pulgadas;
             this.almacenamiento = almacenamiento;
             this.cantCamaras = cantCamaras;
+        }
+        public Celular(int id, int cantidad, double precio, string modelo, string marca,
+            EFactura tipoFactura, double pulgadas, int almacenamiento, int cantCamaras) : this(id,
+                cantidad, precio, modelo, marca, tipoFactura, cantCamaras,almacenamiento,pulgadas) 
+        {
+
         }
         public Celular(int id, int cantidad, double precio, string modelo, string marca, 
             EFactura tipoFactura, double pulgadas, int almacenamiento, int RAM,
@@ -65,7 +70,7 @@ namespace Entidades
         }
         public override string MostrarVisor()
         {
-            return ($"{base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} - {this.pulgadas}In - {this.almacenamiento}Gb ROM - {this.ram}Gb ram");
+            return ($"{base.id} - {base.marca} - {base.modelo} - {base.cantidad}Un - ${base.precioUnitario} - {this.pulgadas}In - {this.almacenamiento}Gb ROM - {this.ram}Gb ram");
         }
         public override string ToString()
         {
