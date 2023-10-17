@@ -10,6 +10,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinForms", "WinForms\WinFor
 		{156C26EC-E115-4D99-B7D8-1E77B4473206} = {156C26EC-E115-4D99-B7D8-1E77B4473206}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archivos", "Archivos", "{1CA9A362-C35E-49E0-BE8E-187113BF7303}"
+	ProjectSection(SolutionItems) = preProject
+		WinForms\ListaDeClientes.xml = WinForms\ListaDeClientes.xml
+		WinForms\MOCK_DATA.json = WinForms\MOCK_DATA.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
