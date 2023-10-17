@@ -16,9 +16,12 @@ namespace WinForms
         public List<string> usuarios;
         public Usuario usuarioIngresado;
         public string datosUsuarioIngresado;
-        public FrmCrud(Usuario usuario)
+        public FrmCrud()
         {
             InitializeComponent();
+        }
+        public FrmCrud(Usuario usuario):this()
+        {
             BtnCaracteristicaUno.Checked = true;
             BtnAscendente.Checked = true;
             this.usuarioIngresado = usuario;
@@ -49,7 +52,6 @@ namespace WinForms
         {
             LblUsuarioConectado.Text = this.datosUsuarioIngresado;
             this.usuarios = this.DeserializacionLog(@"..\..\..\..\WinForms\Usuarios.log");
-            this.usuarios.Add(this.datosUsuarioIngresado);
 
         }
 
@@ -58,7 +60,7 @@ namespace WinForms
 
         }
 
-        private void BtnUsuarios_Click(object sender, EventArgs e)
+        public virtual void BtnUsuarios_Click(object sender, EventArgs e)
         {
             FrmVer frmVer = new FrmVer(this.usuarios);
             frmVer.ShowDialog();
@@ -80,25 +82,12 @@ namespace WinForms
             }
             catch
             {
-                MessageBox.Show("Error en la deserealizacion del archivo, llamar al equipo tecnico", "ERROR");
+                //MessageBox.Show("Error en la deserealizacion del archivo, llamar al equipo tecnico", "ERROR");
                 return usuarios;
             }
 
         }
-        public void SerializacionLog(string datosUsuarioIngresado, string logFilePath)
-        {
-            try
-            {
-                File.AppendAllText(logFilePath, datosUsuarioIngresado + Environment.NewLine);
-
-            }
-            catch
-            {
-                MessageBox.Show("Error en la serealizacion del archivo, llamar al equipo tecnico", "ERROR");
-                return;
-            }
-
-        }
+        
         private void FrmCrudCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("Estas seguro de cerrar la aplicacion", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -109,7 +98,7 @@ namespace WinForms
         }
         private void FrmCrud_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.SerializacionLog(this.datosUsuarioIngresado, @"..\..\..\..\WinForms\Usuarios.log");
+
         }
     }
 }

@@ -20,7 +20,7 @@ namespace WinForms
         private Usuario usuario;
 
 
-        public FrmCrudCliente(Usuario usuario): base(usuario)
+        public FrmCrudCliente(Usuario usuario) : base(usuario)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -49,7 +49,7 @@ namespace WinForms
                 return;
             }
             Cliente cliente = this.clientes[index];
-            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(base.usuarioIngresado,cliente);
+            FrmCrudDispositivos frmVer = new FrmCrudDispositivos(base.usuarioIngresado, cliente, this.datosUsuarioIngresado, this.usuarios);
 
             this.Hide();
             frmVer.ShowDialog();
@@ -164,7 +164,7 @@ namespace WinForms
             }
 
         }
-        
+
         private void FrmCrudCliente_Load(object sender, EventArgs e)
         {
             //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -173,6 +173,7 @@ namespace WinForms
             this.clientes = this.DeserializacionXml(path);
             if (this.clientes == null)
                 this.clientes = new List<Cliente>();
+            this.usuarios.Add(base.datosUsuarioIngresado);
             this.ActualizarVisor();
 
         }
@@ -183,7 +184,7 @@ namespace WinForms
             //path += @"\ListaDeClientes.xml";
             string path = @"..\..\..\..\WinForms\ListaDeClientes.xml";
             this.SerializaciónXml(this.clientes, path);
-            //this.SerializacionLog(this.datosUsuarioIngresado,@"..\..\..\..\WinForms\Usuarios.log");
+            this.SerializacionLog(this.datosUsuarioIngresado, @"..\..\..\..\WinForms\Usuarios.log");
         }
 
 
@@ -202,6 +203,20 @@ namespace WinForms
                 this.clientes.Sort((cliente1, cliente2) => cliente1.Cuit.CompareTo(cliente2.Cuit));
             else
                 this.clientes.Sort((cliente1, cliente2) => cliente2.Cuit.CompareTo(cliente1.Cuit));
+        }
+        public void SerializacionLog(string datosUsuarioIngresado, string logFilePath)
+        {
+            try
+            {
+                File.AppendAllText(logFilePath, datosUsuarioIngresado + Environment.NewLine);
+
+            }
+            catch
+            {
+                //MessageBox.Show("Error en la serealizacion del archivo, llamar al equipo tecnico", "ERROR");
+                return;
+            }
+
         }
     }
 }

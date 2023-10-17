@@ -15,14 +15,16 @@ namespace WinForms
     public partial class FrmCrudDispositivos : FrmCrud
     {
         protected Cliente cliente;
-        public FrmCrudDispositivos(Usuario usuario,Cliente cliente):base(usuario)
+        public FrmCrudDispositivos(Usuario usuario,Cliente cliente, string datosUsuarioIngresado, List<string> usuarios):base(usuario)
         {
             InitializeComponent();
             this.CenterToScreen();
             this.cliente = cliente;
             BtnCaracteristicaUno.Text = "ID";
             BtnCaracteristicaDos.Text = "MARCA";
-
+            this.datosUsuarioIngresado = datosUsuarioIngresado;
+            LblUsuarioConectado.Text = this.datosUsuarioIngresado;
+            this.usuarios = usuarios;
         }
 
         private void ActualizarForm()
@@ -45,15 +47,6 @@ namespace WinForms
             this.ActualizarForm();
         }
 
-        private void lblCliente_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnEliminar_Click_1(object sender, EventArgs e)
-        {
-
-        }
         public Cliente ClienteModificado()
         {
             return this.cliente;

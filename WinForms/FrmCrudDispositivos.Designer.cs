@@ -37,10 +37,6 @@
             lstBox.Location = new Point(42, 106);
             lstBox.Size = new Size(395, 304);
             // 
-            // BtnEliminar
-            // 
-            BtnEliminar.Click += BtnEliminar_Click_1;
-            // 
             // BtnVolver
             // 
             BtnVolver.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -61,7 +57,6 @@
             lblCliente.Size = new Size(50, 19);
             lblCliente.TabIndex = 10;
             lblCliente.Text = "label1";
-            lblCliente.Click += lblCliente_Click;
             // 
             // FrmCrudDispositivos
             // 
